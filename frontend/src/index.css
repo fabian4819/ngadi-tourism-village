@@ -34,3 +34,9 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #065f46;
 }
+
+/* Custom Fonts */
+@font-face {
+  font-family: 'Vivaldi'; /* This name MUST match the name in tailwind.config.js */
+  src: url('./fonts/vivaldi.ttf') format('truetype');
+}

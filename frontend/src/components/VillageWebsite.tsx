@@ -2,6 +2,7 @@ import { useState } from "react";
 import { twMerge } from "tailwind-merge";
 import {
     ChevronDown,
+    ChevronUp,
     Play,
     MapPin,
     Phone,
@@ -20,6 +21,11 @@ import { useBreakpoint, getResponsiveValue } from "../hooks/useBreakpoint"; // I
 const VillageWebsite = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const currentBreakpoint = useBreakpoint(); // Get the current breakpoint
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleDropdown = () => {
+        setIsOpen(!isOpen);
+    };
 
     // Utility function for responsive classes
     const responsiveClass = (
@@ -94,23 +100,43 @@ const VillageWebsite = () => {
                                 Tes BMI
                             </a>
                         </div>
-                        <div className="flex items-center gap-2 px-5 py-3 bg-emerald-900 rounded-full relative group"> {/* Changed py-3 to py-2 */}
-                            <span className="text-white text-sm font-bold">Kenali Desa</span>
-                            <ChevronDown className="w-6 h-6 text-white" /> {/* Ensure this icon is correct and styled */}
-
-                            {/* Desktop Dropdown */}
-                            <div className="absolute top-full right-0 mt-2 w-36 bg-white rounded-bl-lg rounded-br-lg border border-emerald-900 py-4 hidden group-hover:block">
-                                <div className="px-4 py-2 border-b border-emerald-900">
-                                    <span className="text-emerald-900 text-sm font-medium">
-                                        Ohoi Dullah
-                                    </span>
-                                </div>
-                                <div className="px-4 py-2">
-                                    <span className="text-emerald-900 text-sm font-medium"> {/* Ensure text-emerald-900 and font-medium */}
-                                        Ohoi Ngadi {/* Changed "Ohoi LabetawiNgadi" to "Ohoi Ngadi" */}
-                                    </span>
-                                </div>
+                        <div className="relative inline-block">
+                            {/* Tombol Kenali Desa */}
+                            <div
+                                className={`
+            flex items-center justify-between px-5 py-3 bg-emerald-900 text-white text-sm font-bold cursor-pointer
+            border border-emerald-900
+            rounded-full // Always rounded-full
+        `}
+                                onClick={toggleDropdown}
+                            >
+                                <span>Kenali Desa</span>
+                                {isOpen ? (
+                                    <ChevronUp className="w-6 h-6 text-white transition-transform duration-200" />
+                                ) : (
+                                    <ChevronDown className="w-6 h-6 text-white transition-transform duration-200" />
+                                )}
                             </div>
+
+                            {/* Dropdown Content */}
+                            {isOpen && (
+                                <div className="absolute top-full left-0 right-0 z-10">
+                                    <div className="bg-white border border-emerald-900 rounded-b-3xl overflow-hidden"> {/* Only rounded-b-full for the content */}
+                                        {/* Item: Ohoi Dullah */}
+                                        <div className="px-5 py-2 border-b border-emerald-900">
+                                            <span className="text-emerald-900 text-sm font-medium">
+                                                Ohoi Dullah
+                                            </span>
+                                        </div>
+                                        {/* Item: Ohoi Labetawi */}
+                                        <div className="px-5 py-2">
+                                            <span className="text-emerald-900 text-sm font-medium">
+                                                Ohoi Labetawi
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </div>
 
@@ -134,7 +160,7 @@ const VillageWebsite = () => {
                 className={responsiveClass(
                     "flex flex-col items-center gap-6 px-3", // mobile
                     "flex flex-col items-center gap-8 px-5", // tablet
-                    "flex flex-col items-center gap-10 px-6" // desktop
+                    "flex flex-col items-center gap-10" // desktop
                 )}
             >
                 {/* Decorative Elements */}
@@ -142,16 +168,19 @@ const VillageWebsite = () => {
                     <div
                         className={responsiveClass(
                             "hidden", // mobile
-                            "flex flex-col items-center gap-1 transform rotate-180", // tablet
-                            "flex flex-col items-center gap-1 transform rotate-180" // desktop
+                            "flex flex-col items-center gap-1", // tablet
+                            "flex flex-col items-center gap-1" // desktop
                         )}
                     >
-                        {[...Array(6)].map((_, i) => (
-                            <div
-                                key={i}
-                                className={`w-0 ${i % 2 === 0 ? "h-5" : "h-12"} bg-amber-300`}
-                            ></div>
-                        ))}
+                        <img
+                            src="/images/left-main-asset.png"
+                            alt="Left Asset"
+                            className={responsiveClass(
+                                "hidden", // mobile
+                                "block w-20 h-auto", // tablet
+                                "block w-[350px] h-auto" // desktop
+                            )}
+                        />
                     </div>
 
                     <h1
@@ -171,12 +200,15 @@ const VillageWebsite = () => {
                             "flex flex-col items-center gap-1" // desktop
                         )}
                     >
-                        {[...Array(6)].map((_, i) => (
-                            <div
-                                key={i}
-                                className={`w-0 ${i % 2 === 0 ? "h-5" : "h-12"} bg-amber-300`}
-                            ></div>
-                        ))}
+                        <img
+                            src="/images/right-main-asset.png"
+                            alt="Right Asset"
+                            className={responsiveClass(
+                                "hidden", // mobile
+                                "block w-20 h-auto", // tablet
+                                "block w-[350px] h-auto" // desktop
+                            )}
+                        />
                     </div>
                 </div>
 
