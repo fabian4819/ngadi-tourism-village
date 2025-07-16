@@ -104,11 +104,15 @@ const VillageWebsite = () => {
                             {/* Tombol Kenali Desa */}
                             <div
                                 className={`
-            flex items-center justify-between px-5 py-3 bg-emerald-900 text-white text-sm font-bold cursor-pointer
-            border border-emerald-900
-            rounded-full // Always rounded-full
-        `}
+                                    flex items-center justify-between px-5 py-3 bg-emerald-900 text-white text-sm font-bold cursor-pointer
+                                    border border-emerald-900
+                                    rounded-t-3xl rounded-b-3xl
+                                `}
                                 onClick={toggleDropdown}
+                                style={{
+                                    borderBottomLeftRadius: isOpen ? 0 : '1.5rem',
+                                    borderBottomRightRadius: isOpen ? 0 : '1.5rem',
+                                }}
                             >
                                 <span>Kenali Desa</span>
                                 {isOpen ? (
@@ -120,19 +124,27 @@ const VillageWebsite = () => {
 
                             {/* Dropdown Content */}
                             {isOpen && (
-                                <div className="absolute top-full left-0 right-0 z-10">
-                                    <div className="bg-white border border-emerald-900 rounded-b-3xl overflow-hidden"> {/* Only rounded-b-full for the content */}
-                                        {/* Item: Ohoi Dullah */}
-                                        <div className="px-5 py-2 border-b border-emerald-900">
-                                            <span className="text-emerald-900 text-sm font-medium">
-                                                Ohoi Dullah
-                                            </span>
-                                        </div>
-                                        {/* Item: Ohoi Labetawi */}
-                                        <div className="px-5 py-2">
-                                            <span className="text-emerald-900 text-sm font-medium">
-                                                Ohoi Labetawi
-                                            </span>
+                                <div className="absolute left-0 right-0 z-10">
+                                    <div className="bg-white border-x border-b border-emerald-900 rounded-b-3xl overflow-hidden shadow-lg">
+                                        <div className="flex flex-col">
+                                            {/* Item: Ohoi Dullah */}
+                                            <button
+                                                type="button"
+                                                className="px-5 py-2 border-b border-emerald-900 text-left hover:bg-emerald-50 focus:bg-emerald-100 transition"
+                                            >
+                                                <span className="text-emerald-900 text-sm font-medium">
+                                                    Ohoi Dullah
+                                                </span>
+                                            </button>
+                                            {/* Item: Ohoi Labetawi */}
+                                            <button
+                                                type="button"
+                                                className="px-5 py-2 text-left hover:bg-emerald-50 focus:bg-emerald-100 transition"
+                                            >
+                                                <span className="text-emerald-900 text-sm font-medium">
+                                                    Ohoi Labetawi
+                                                </span>
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -164,49 +176,55 @@ const VillageWebsite = () => {
                 )}
             >
                 {/* Decorative Elements */}
-                <div className="flex items-center justify-center w-full">
+                <div className="relative flex items-center justify-center w-full">
+                    {/* Left Asset */}
                     <div
                         className={responsiveClass(
                             "hidden", // mobile
-                            "flex flex-col items-center gap-1", // tablet
-                            "flex flex-col items-center gap-1" // desktop
+                            "block absolute left-0 top-1/2 -translate-y-1/2", // tablet
+                            "block absolute left-0 top-1/2 -translate-y-1/2" // desktop
                         )}
+                        style={{ zIndex: 1 }}
                     >
                         <img
                             src="/images/left-main-asset.png"
                             alt="Left Asset"
                             className={responsiveClass(
                                 "hidden", // mobile
-                                "block w-20 h-auto", // tablet
-                                "block w-[350px] h-auto" // desktop
+                                "w-20 h-auto", // tablet
+                                "w-[350px] h-auto" // desktop
                             )}
                         />
                     </div>
 
+                    {/* Title */}
                     <h1
                         className={responsiveClass(
-                            "text-emerald-900 text-4xl font-normal font-['Vivaldi'] text-center", // mobile
-                            "text-emerald-900 text-6xl font-normal font-['Vivaldi'] text-center mx-8", // tablet
-                            "text-emerald-900 text-8xl font-normal font-['Vivaldi'] text-center mx-12" // desktop
+                            "text-emerald-900 text-4xl font-semibold font-['Vivaldi'] text-center", // mobile
+                            "text-emerald-900 text-6xl font-semibold font-['Vivaldi'] text-center", // tablet
+                            "text-emerald-900 text-8xl font-semibold font-['Vivaldi'] text-center" // desktop
                         )}
+                        style={{ zIndex: 2 }}
                     >
                         Ohoi Ngadi
                     </h1>
 
+                    {/* Right Asset */}
                     <div
                         className={responsiveClass(
                             "hidden", // mobile
-                            "flex flex-col items-center gap-1", // tablet
-                            "flex flex-col items-center gap-1" // desktop
+                            "block absolute right-0 top-1/2 -translate-y-1/2", // tablet
+                            "block absolute right-0 top-1/2 -translate-y-1/2" // desktop
                         )}
+                        style={{ zIndex: 1 }}
                     >
                         <img
                             src="/images/right-main-asset.png"
                             alt="Right Asset"
                             className={responsiveClass(
                                 "hidden", // mobile
-                                "block w-20 h-auto", // tablet
-                                "block w-[350px] h-auto" // desktop
+                                "w-20 h-auto", // tablet
+                                "w-[350px] h-auto" // desktop
                             )}
                         />
                     </div>
