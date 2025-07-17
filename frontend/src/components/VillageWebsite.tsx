@@ -22,6 +22,7 @@ const VillageWebsite = () => {
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const currentBreakpoint = useBreakpoint(); // Get the current breakpoint
     const [isOpen, setIsOpen] = useState(false);
+    const [showYoutube, setShowYoutube] = useState(false);
 
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
@@ -327,8 +328,8 @@ const VillageWebsite = () => {
                     <div
                         className={responsiveClass(
                             "w-full relative ml-0", // mobile
-                            "w-64 relative ml-8", // tablet (geser ke kiri)
-                            "w-80 relative mr-20" // desktop (geser ke kiri)
+                            "w-64 relative ml-8", // tablet
+                            "w-80 relative ml-16" // desktop
                         )}
                     >
                         <img
@@ -347,7 +348,8 @@ const VillageWebsite = () => {
                                 "absolute bottom-4 right-[-22px] w-14 h-14", // tablet
                                 "absolute bottom-6 right-[-28px] w-16 h-16" // desktop
                             )}
-                            style={{ zIndex: 2 }}
+                            style={{ zIndex: 2, cursor: "pointer" }}
+                            onClick={() => setShowYoutube(true)}
                         >
                             <div className="w-full h-full bg-emerald-900 rounded-full border-4 border-white flex items-center justify-center shadow-lg">
                                 <Play className={responsiveClass("w-6 h-6", "w-7 h-7", "w-8 h-8") + " text-white"} />
@@ -356,6 +358,33 @@ const VillageWebsite = () => {
                     </div>
                 </div>
             </section>
+
+            {/* Modal YouTube */}
+            {showYoutube && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+                    <div className="bg-white rounded-2xl shadow-2xl p-4 relative max-w-xl w-full">
+                        <button
+                            className="absolute top-0 right-1 text-emerald-900 text-2xl font-bold"
+                            onClick={() => setShowYoutube(false)}
+                            aria-label="Close"
+                        >
+                            ×
+                        </button>
+                        <div className="aspect-video w-full rounded-xl overflow-hidden">
+                            <iframe
+                                width="100%"
+                                height="100%"
+                                src="https://www.youtube.com/embed/VuRw_Pv2_Go?autoplay=1"
+                                title="YouTube video"
+                                frameBorder="0"
+                                allow="autoplay; encrypted-media"
+                                allowFullScreen
+                                className="w-full h-full"
+                            ></iframe>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             {/* Welcome Section */}
             <section
@@ -388,12 +417,12 @@ const VillageWebsite = () => {
                         >
                             <h2
                                 className={responsiveClass(
-                                    "text-emerald-900 text-4xl font-normal", // mobile
-                                    "text-emerald-900 text-6xl font-normal", // tablet
-                                    "text-emerald-900 text-8xl font-normal" // desktop
+                                    "text-emerald-900 text-4xl font-semibold", // mobile
+                                    "text-emerald-900 text-6xl font-semibold", // tablet
+                                    "text-emerald-900 text-8xl font-semibold" // desktop
                                 )}
                             >
-                                <span className="font-['Cormorant']">T</span>
+                                <span className="font-['Cormorant'] italic">T</span>
                                 <span className="font-['Vivaldi']">abe ma!</span>
                             </h2>
                         </div>
