@@ -230,30 +230,43 @@ const VillageWebsite = () => {
                     </div>
                 </div>
 
-                {/* Hero Image */}
+                {/* Hero Video */}
                 <div
                     className={responsiveClass(
-                        "w-full h-48 relative", // mobile
-                        "w-full h-64 relative", // tablet
-                        "w-full h-80 relative" // desktop
+                        "w-full px-2 md:px-8 lg:px-20 box-border", // padding kiri-kanan
+                        "w-full px-8 box-border",
+                        "w-full px-10 box-border"
                     )}
                 >
-                    <img
-                        src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&h=400&fit=crop"
-                        alt="Beautiful bay view of Ohoi Ngadi"
-                        className="w-full h-full object-cover rounded-3xl"
-                    />
-                    <div
-                        className={responsiveClass(
-                            "absolute bottom-4 right-4 w-16 h-16", // mobile
-                            "absolute bottom-6 right-6 w-20 h-20", // tablet
-                            "absolute bottom-8 right-8 w-24 h-24" // desktop
-                        )}
-                    >
-                        <div className="w-full h-full bg-emerald-900 rounded-full border-4 border-white flex items-center justify-center">
-                            <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                                <div className="w-0 h-0 border-l-4 border-l-emerald-900 border-t-2 border-t-transparent border-b-2 border-b-transparent ml-1"></div>
-                            </div>
+                    <div className="relative w-full aspect-video rounded-3xl overflow-hidden bg-white">
+                        <video
+                            src="/videos/tual-video.mp4"
+                            autoPlay
+                            loop
+                            muted
+                            playsInline
+                            className="w-full h-full object-cover"
+                        />
+                        {/* SVG efek pojok kanan bawah */}
+                        <div className="absolute bottom-0 right-0" style={{ width: 250, height: 250, pointerEvents: "none" }}>
+                            <svg width="250" height="250" viewBox="0 0 250 250" fill="none">
+                                <path
+                                    d="
+                M250,250
+                L250,125
+                A125,125 0 0 0 125,250
+                Z
+            "
+                                    fill="white"
+                                />
+                            </svg>
+                        </div>
+                        {/* Icon di pojok kanan bawah, posisikan di dalam lekukan */}
+                        <div className="absolute bottom-4 right-4 z-10">
+                            <svg width="70" height="70" viewBox="0 0 56 56" fill="none">
+                                <circle cx="28" cy="28" r="26" stroke="#14532d" strokeWidth="4" fill="white" />
+                                <path d="M28 18v16M28 34l6-6M28 34l-6-6" stroke="#14532d" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
                         </div>
                     </div>
                 </div>
@@ -271,7 +284,7 @@ const VillageWebsite = () => {
                     className={responsiveClass(
                         "flex flex-col gap-6", // mobile
                         "flex flex-col gap-8 lg:flex-row lg:items-center", // tablet
-                        "flex flex-row items-center gap-20" // desktop
+                        "flex flex-row items-center gap-60" // desktop
                     )}
                 >
                     <div
@@ -285,7 +298,7 @@ const VillageWebsite = () => {
                             className={responsiveClass(
                                 "mb-3", // mobile
                                 "mb-4", // tablet
-                                "mb-6" // desktop
+                                "mb-2" // desktop
                             )}
                         >
                             <h2
@@ -295,7 +308,7 @@ const VillageWebsite = () => {
                                     "text-emerald-900 text-4xl font-bold font-['Montserrat']" // desktop
                                 )}
                             >
-                                Mengenal Budaya <span className="text-emerald-900">Katong</span>
+                                Mengenal Budaya <span className="italic">Katong</span>
                             </h2>
                         </div>
                         <p
@@ -313,13 +326,13 @@ const VillageWebsite = () => {
 
                     <div
                         className={responsiveClass(
-                            "w-full relative", // mobile
-                            "w-64 relative", // tablet
-                            "w-80 relative" // desktop
+                            "w-full relative ml-0", // mobile
+                            "w-64 relative ml-8", // tablet (geser ke kiri)
+                            "w-80 relative mr-20" // desktop (geser ke kiri)
                         )}
                     >
                         <img
-                            src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=300&h=200&fit=crop"
+                            src="/images/image-template.png"
                             alt="Cultural activity"
                             className={responsiveClass(
                                 "w-full h-32 rounded-3xl", // mobile
@@ -327,15 +340,17 @@ const VillageWebsite = () => {
                                 "w-full h-44 rounded-3xl" // desktop
                             )}
                         />
+                        {/* Play icon: sebagian di luar gambar */}
                         <div
                             className={responsiveClass(
-                                "absolute bottom-2 right-2 w-12 h-12", // mobile
-                                "absolute bottom-4 right-4 w-14 h-14", // tablet
-                                "absolute bottom-6 right-6 w-16 h-16" // desktop
+                                "absolute bottom-2 right-[-18px] w-12 h-12", // mobile
+                                "absolute bottom-4 right-[-22px] w-14 h-14", // tablet
+                                "absolute bottom-6 right-[-28px] w-16 h-16" // desktop
                             )}
+                            style={{ zIndex: 2 }}
                         >
-                            <div className="w-full h-full bg-emerald-900 rounded-full border-4 border-white flex items-center justify-center">
-                                <Play className="w-6 h-6 text-white" />
+                            <div className="w-full h-full bg-emerald-900 rounded-full border-4 border-white flex items-center justify-center shadow-lg">
+                                <Play className={responsiveClass("w-6 h-6", "w-7 h-7", "w-8 h-8") + " text-white"} />
                             </div>
                         </div>
                     </div>
