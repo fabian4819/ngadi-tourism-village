@@ -6,7 +6,6 @@ import {
     Play,
     Phone,
     Mail,
-    Globe,
     Instagram,
     Facebook,
     Youtube
@@ -796,13 +795,29 @@ const VillageWebsite = () => {
             </section>
 
             {/* Organization Chart */}
-            <OrganizationChart />
+            <OrganizationChart
+                className={responsiveClass(
+                    "px-3 py-8 ml-0", // mobile
+                    "px-5 py-12 ml-12", // tablet
+                    "px-12 py-16 ml-8" // desktop
+                )}
+            />
 
             {/* Article Section */}
-            <ArticleSection />
+            <ArticleSection
+                className={responsiveClass(
+                    "px-3 py-8 ml-0", // mobile
+                    "px-5 py-12 ml-12", // tablet
+                    "px-12 py-16 ml-8" // desktop
+                )} />
 
             {/* Info Section */}
-            <InfoSection />
+            <InfoSection
+                className={responsiveClass(
+                    "px-3 py-8 ml-0", // mobile
+                    "px-5 py-12 ml-12", // tablet
+                    "px-12 py-16 ml-8" // desktop
+                )} />
 
             {/* Location Section */}
             <section
@@ -823,7 +838,7 @@ const VillageWebsite = () => {
                         className={responsiveClass(
                             "text-emerald-900 text-lg font-bold font-['Montserrat'] mb-2", // mobile
                             "text-emerald-900 text-2xl font-bold font-['Montserrat'] mb-3", // tablet
-                            "text-emerald-900 text-3xl font-bold font-['Montserrat'] mb-4" // desktop
+                            "text-emerald-900 text-4xl font-bold font-['Montserrat'] mb-4" // desktop
                         )}
                     >
                         Peta Lokasi
@@ -832,7 +847,7 @@ const VillageWebsite = () => {
                         className={responsiveClass(
                             "text-black text-sm font-normal font-['Albert_Sans'] leading-tight", // mobile
                             "text-black text-lg font-normal font-['Albert_Sans'] leading-relaxed", // tablet
-                            "text-black text-xl font-normal font-['Albert_Sans'] leading-relaxed" // desktop
+                            "text-black text-3xl font-normal font-['Albert_Sans'] leading-relaxed" // desktop
                         )}
                     >
                         Temukan <span className="italic">katong</span> disini!
@@ -842,37 +857,19 @@ const VillageWebsite = () => {
                 {/* Map Placeholder */}
                 <div
                     className={responsiveClass(
-                        "w-full h-48 bg-neutral-300 rounded-lg relative", // mobile
-                        "w-full h-64 bg-neutral-300 rounded-lg relative", // tablet
-                        "w-full h-80 bg-neutral-300 rounded-lg relative" // desktop
+                        "w-full h-48 rounded-lg overflow-hidden flex items-end", // mobile
+                        "w-full h-64 rounded-lg overflow-hidden flex items-end", // tablet
+                        "w-[900px] rounded-lg overflow-hidden flex items-end" // desktop
                     )}
+                    style={{ marginBottom: 0 }}
                 >
-                    <div className="absolute inset-0 flex items-center justify-center">
-                        <div
-                            className={responsiveClass(
-                                "px-4 py-2 bg-white border-2 border-emerald-900 rounded-lg", // mobile
-                                "px-6 py-3 bg-white border-2 border-emerald-900 rounded-xl", // tablet
-                                "px-8 py-4 bg-white border-2 border-emerald-900 rounded-2xl" // desktop
-                            )}
-                        >
-                            <span
-                                className={responsiveClass(
-                                    "text-emerald-900 text-sm font-semibold font-['Montserrat']", // mobile
-                                    "text-emerald-900 text-lg font-semibold font-['Montserrat']", // tablet
-                                    "text-emerald-900 text-xl font-semibold font-['Montserrat']" // desktop
-                                )}
-                            >
-                                Ohoi Ngadi
-                            </span>
-                        </div>
-                    </div>
-                    <div
-                        className={responsiveClass(
-                            "absolute top-4 right-4 w-16 h-10 bg-amber-300 border-2 border-emerald-900", // mobile
-                            "absolute top-6 right-6 w-20 h-12 bg-amber-300 border-2 border-emerald-900", // tablet
-                            "absolute top-8 right-8 w-24 h-16 bg-amber-300 border-3 border-emerald-900" // desktop
-                        )}
-                    ></div>
+                    <img
+                        src="/images/lokasi.png"
+                        alt="Lokasi Ohoi Ngadi"
+                        className="w-full h-full object-contain"
+                        style={{ display: "block", marginLeft: 0, marginBottom: 0 }}
+                        draggable={false}
+                    />
                 </div>
             </section>
 
@@ -893,12 +890,21 @@ const VillageWebsite = () => {
                             "flex flex-col gap-6" // desktop
                         )}
                     >
-                        <div className="flex items-center gap-4">
-                            <div className="w-12 h-0 border-t border-white transform -rotate-90"></div>
+                        <div className="flex items-center gap-1">
                             <img
-                                src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=72&h=81&fit=crop"
+                                src="/images/title-footer.png"
+                                alt="Tualang Tual"
+                                className={responsiveClass(
+                                    "h-[30px] w-auto", // mobile
+                                    "h-[46.57px] w-auto", // tablet
+                                    "h-[100px] w-auto" // desktop
+                                )}
+                            />
+                            <div className="w-24 h-0 border-t border-white transform -rotate-90"></div>
+                            <img
+                                src="/images/logo-maren.png"
                                 alt="Logo"
-                                className="w-16 h-20"
+                                className="w-20"
                             />
                         </div>
                         <div>
@@ -928,9 +934,9 @@ const VillageWebsite = () => {
                             </h4>
                             <div className="space-y-3">
                                 <div className="flex items-center gap-4">
-                                    <Globe className="w-6 h-6 text-white" />
+                                    <Facebook className="w-6 h-6 text-white" />
                                     <span className="text-white text-lg font-semibold">
-                                        ngadikeren.id
+                                        Pemerintah Ohoi Ngadi
                                     </span>
                                 </div>
                                 <div className="flex items-center gap-4">
