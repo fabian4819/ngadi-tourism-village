@@ -4,13 +4,12 @@ import {
     ChevronDown,
     ChevronUp,
     Play,
-    MapPin,
     Phone,
     Mail,
     Globe,
     Instagram,
     Facebook,
-    Youtube,
+    Youtube
 } from "lucide-react";
 import OrganizationChart from "./OrganizationChart";
 import MobileMenu from "./MobileMenu";
@@ -27,6 +26,44 @@ const VillageWebsite = () => {
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     };
+
+    // type PinIcon = "star" | "mosque" | "church" | "utensils" | "hospital";
+
+    // const mapPins: { x: string; y: string; icon: PinIcon; label: string }[] = [
+    //     { x: "15%", y: "20%", icon: "star", label: "Tempat Wisata" },
+    //     { x: "80%", y: "25%", icon: "mosque", label: "Masjid" },
+    //     { x: "90%", y: "35%", icon: "church", label: "Gereja" },
+    //     { x: "70%", y: "40%", icon: "utensils", label: "Tempat Makan" },
+    //     { x: "20%", y: "35%", icon: "hospital", label: "Puskesmas" },
+    //     { x: "50%", y: "30%", icon: "utensils", label: "Tempat Makan" },
+    //     { x: "40%", y: "60%", icon: "utensils", label: "Tempat Makan" },
+    //     { x: "60%", y: "80%", icon: "utensils", label: "Tempat Makan" },
+    // ];
+
+    // const iconFiles: Record<PinIcon, { grey: string; green: string }> = {
+    //     star: {
+    //         grey: "/icon/favorite-grey.png",
+    //         green: "/icon/favorite-green.png",
+    //     },
+    //     mosque: {
+    //         grey: "/icon/mosque-grey.png",
+    //         green: "/icon/mosque-green.png",
+    //     },
+    //     church: {
+    //         grey: "/icon/church-grey.png",
+    //         green: "/icon/church-green.png",
+    //     },
+    //     utensils: {
+    //         grey: "/icon/restaurant-grey.png",
+    //         green: "/icon/restaurant-green.png",
+    //     },
+    //     hospital: {
+    //         grey: "/icon/hospital-grey.png",
+    //         green: "/icon/hospital-green.png",
+    //     },
+    // };
+
+    // const [activePin, setActivePin] = useState<number | null>(null);
 
     // Utility function for responsive classes
     const responsiveClass = (
@@ -193,7 +230,7 @@ const VillageWebsite = () => {
                             className={responsiveClass(
                                 "hidden", // mobile
                                 "w-20 h-auto", // tablet
-                                "w-[350px] h-auto" // desktop
+                                "w-[300px] h-auto" // desktop
                             )}
                         />
                     </div>
@@ -203,7 +240,7 @@ const VillageWebsite = () => {
                         className={responsiveClass(
                             "text-emerald-900 text-4xl font-semibold font-['Vivaldi'] text-center", // mobile
                             "text-emerald-900 text-6xl font-semibold font-['Vivaldi'] text-center", // tablet
-                            "text-emerald-900 text-8xl font-semibold font-['Vivaldi'] text-center" // desktop
+                            "text-emerald-900 text-9xl font-semibold font-['Vivaldi'] text-center" // desktop
                         )}
                         style={{ zIndex: 2 }}
                     >
@@ -225,7 +262,7 @@ const VillageWebsite = () => {
                             className={responsiveClass(
                                 "hidden", // mobile
                                 "w-20 h-auto", // tablet
-                                "w-[350px] h-auto" // desktop
+                                "w-[300px] h-auto" // desktop
                             )}
                         />
                     </div>
@@ -314,9 +351,9 @@ const VillageWebsite = () => {
                         </div>
                         <p
                             className={responsiveClass(
-                                "text-black text-sm font-normal font-['Albert_Sans'] leading-tight", // mobile
-                                "text-black text-lg font-normal font-['Albert_Sans'] leading-relaxed", // tablet
-                                "text-black text-2xl font-normal font-['Albert_Sans'] leading-relaxed" // desktop
+                                "text-black text-sm font-medium font-['Albert_Sans'] leading-tight", // mobile
+                                "text-black text-lg font-medium font-['Albert_Sans'] leading-relaxed", // tablet
+                                "text-black text-2xl font-medium font-['Albert_Sans'] leading-relaxed" // desktop
                             )}
                         >
                             Tual bukan hanya soal keindahan lautnya, tapi juga tentang cerita,
@@ -398,7 +435,7 @@ const VillageWebsite = () => {
                     className={responsiveClass(
                         "flex flex-col gap-6", // mobile
                         "flex flex-col gap-8 lg:flex-row lg:justify-between", // tablet
-                        "flex flex-row justify-between items-start gap-12" // desktop
+                        "flex flex-row justify-between items-start gap-32" // desktop
                     )}
                 >
                     <div
@@ -417,9 +454,9 @@ const VillageWebsite = () => {
                         >
                             <h2
                                 className={responsiveClass(
-                                    "text-emerald-900 text-4xl font-semibold", // mobile
-                                    "text-emerald-900 text-6xl font-semibold", // tablet
-                                    "text-emerald-900 text-8xl font-semibold" // desktop
+                                    "text-emerald-900 text-4xl font-medium", // mobile
+                                    "text-emerald-900 text-6xl font-medium", // tablet
+                                    "text-emerald-900 text-9xl font-medium" // desktop
                                 )}
                             >
                                 <span className="font-['Cormorant'] italic">T</span>
@@ -436,9 +473,9 @@ const VillageWebsite = () => {
                         >
                             <p
                                 className={responsiveClass(
-                                    "text-black text-sm font-normal font-['Albert_Sans'] leading-tight", // mobile
-                                    "text-black text-lg font-normal font-['Albert_Sans'] leading-relaxed", // tablet
-                                    "text-black text-2xl font-normal font-['Albert_Sans'] leading-relaxed" // desktop
+                                    "text-black text-sm font-medium font-['Albert_Sans'] leading-tight", // mobile
+                                    "text-black text-lg font-medium font-['Albert_Sans'] leading-relaxed", // tablet
+                                    "text-black text-2xl font-medium font-['Albert_Sans'] leading-relaxed" // desktop
                                 )}
                             >
                                 Selamat datang di Ohoi Ngadi, desa wisata bahari di Tual, Maluku
@@ -457,56 +494,71 @@ const VillageWebsite = () => {
 
                         <button
                             className={responsiveClass(
-                                "flex items-center gap-2 px-4 py-2 bg-emerald-900 rounded-xl text-white text-xs font-semibold", // mobile
-                                "flex items-center gap-2 px-6 py-3 bg-emerald-900 rounded-2xl text-white text-lg font-semibold", // tablet
-                                "flex items-center gap-3 px-8 py-4 bg-emerald-900 rounded-3xl text-white text-xl font-semibold" // desktop
+                                "flex items-center gap-2 px-4 py-2 bg-emerald-900 rounded-xl text-white text-xs font-semibold font-['Montserrat']", // mobile
+                                "flex items-center gap-2 px-6 py-3 bg-emerald-900 rounded-2xl text-white text-lg font-semibold font-['Montserrat']", // tablet
+                                "flex items-center gap-3 px-6 py-2 bg-emerald-900 rounded-3xl text-white text-xl font-semibold font-['Montserrat']" // desktop
                             )}
                         >
-                            <span>Lihat Podcast Suara Katong</span>
-                            <Play
+                            <span>Lihat Podcast Suara <span className="italic">Katong</span></span>
+                            <span
                                 className={responsiveClass(
-                                    "w-4 h-4", // mobile
-                                    "w-5 h-5", // tablet
-                                    "w-6 h-6" // desktop
+                                    "inline-flex items-center justify-center rounded-full border-2 border-white bg-emerald-900", // mobile
+                                    "inline-flex items-center justify-center rounded-full border-2 border-white bg-emerald-900", // tablet
+                                    "inline-flex items-center justify-center rounded-full border-2 border-white bg-emerald-900" // desktop
                                 )}
-                            />
+                                style={{
+                                    width: getResponsiveValue({ mobile: 28, tablet: 36, desktop: 30 }, currentBreakpoint),
+                                    height: getResponsiveValue({ mobile: 28, tablet: 36, desktop: 30 }, currentBreakpoint),
+                                }}
+                            >
+                                <Play
+                                    className={responsiveClass(
+                                        "w-4 h-4", // mobile
+                                        "w-5 h-5", // tablet
+                                        "w-4 h-4" // desktop
+                                    )}
+                                />
+                            </span>
                         </button>
                     </div>
 
                     {/* Image Gallery */}
                     <div
                         className={responsiveClass(
-                            "flex gap-2", // mobile
-                            "flex gap-3", // tablet
-                            "flex gap-4" // desktop
+                            "flex items-center justify-center gap-2", // mobile
+                            "flex items-center justify-center gap-3", // tablet
+                            "flex items-center justify-center gap-4 mt-20" // desktop
                         )}
                     >
+                        {/* Center image (tabema-1) */}
                         <img
-                            src="https://images.unsplash.com/photo-1583212292454-1fe6229603b7?w=200&h=250&fit=crop"
+                            src="/images/tabema-1.png"
                             alt="Village life 1"
                             className={responsiveClass(
                                 "w-24 h-32 rounded-lg object-cover", // mobile
-                                "w-32 h-40 rounded-xl object-cover", // tablet
-                                "w-48 h-60 rounded-2xl object-cover" // desktop
+                                "w-32 rounded-xl object-cover", // tablet
+                                "w-60 rounded-2xl object-cover" // desktop
                             )}
+                            style={{ zIndex: 2 }}
                         />
-                        <div className="flex flex-col gap-2">
+                        {/* Right column: tabema-2 (top), tabema-3 (bottom) */}
+                        <div className="flex flex-col justify-center" style={{ zIndex: 1 }}>
                             <img
-                                src="https://images.unsplash.com/photo-1566738780863-f9608f88f3a9?w=200&h=150&fit=crop"
+                                src="/images/tabema-2.png"
                                 alt="Village life 2"
                                 className={responsiveClass(
-                                    "w-24 h-20 rounded-lg object-cover", // mobile
-                                    "w-32 h-24 rounded-xl object-cover", // tablet
-                                    "w-48 h-32 rounded-2xl object-cover" // desktop
+                                    "w-24 h-20 rounded-lg object-cover translate-y-[-20%]", // mobile
+                                    "w-32 h-24 rounded-xl object-cover translate-y-[-24%]", // tablet
+                                    "w-60 rounded-2xl object-cover translate-y-[-10%]" // desktop
                                 )}
                             />
                             <img
-                                src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=200&h=150&fit=crop"
+                                src="/images/tabema-3.png"
                                 alt="Village life 3"
                                 className={responsiveClass(
-                                    "w-24 h-20 rounded-lg object-cover", // mobile
-                                    "w-32 h-24 rounded-xl object-cover", // tablet
-                                    "w-48 h-32 rounded-2xl object-cover" // desktop
+                                    "w-24 h-20 rounded-lg object-cover translate-y-[20%]", // mobile
+                                    "w-32 h-24 rounded-xl object-cover translate-y-[24%]", // tablet
+                                    "w-60 rounded-2xl object-cover translate-y-[10%]" // desktop
                                 )}
                             />
                         </div>
@@ -526,60 +578,88 @@ const VillageWebsite = () => {
                     className={responsiveClass(
                         "flex gap-2 overflow-x-auto", // mobile
                         "flex gap-3 overflow-x-auto", // tablet
-                        "flex gap-4" // desktop
+                        "flex gap-6 overflow-x-auto" // desktop
                     )}
                 >
-                    <img
-                        src="https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=150&h=180&fit=crop"
-                        alt="Local dish 1"
-                        className={responsiveClass(
-                            "w-24 h-28 rounded-xl object-cover flex-shrink-0", // mobile
-                            "w-32 h-36 rounded-2xl object-cover flex-shrink-0", // tablet
-                            "w-48 h-56 rounded-3xl object-cover" // desktop
-                        )}
-                    />
-
-                    <div
-                        className={responsiveClass(
-                            "w-32 h-28 px-3 pb-3 bg-gradient-to-b from-black/0 via-black/60 to-emerald-900 rounded-xl flex flex-col justify-end items-center flex-shrink-0", // mobile
-                            "w-40 h-36 px-4 pb-4 bg-gradient-to-b from-black/0 via-black/60 to-emerald-900 rounded-2xl flex flex-col justify-end items-center flex-shrink-0", // tablet
-                            "w-64 h-56 px-5 pb-5 bg-gradient-to-b from-black/0 via-black/60 to-emerald-900 rounded-3xl flex flex-col justify-end items-center" // desktop
-                        )}
-                    >
-                        <h3
-                            className={responsiveClass(
-                                "text-white text-lg font-bold font-['Montserrat'] mb-1", // mobile
-                                "text-white text-xl font-bold font-['Montserrat'] mb-2", // tablet
-                                "text-white text-3xl font-bold font-['Montserrat'] mb-2" // desktop
-                            )}
+                    {[
+                        {
+                            img: "/images/pisang-embal.png",
+                            title: "Pisang Embal",
+                            desc: "Pisang goreng khas Tual yang dibalut tepung embal singkong renyah, disajikan hangat dan nikmat dipadu sambal pedas",
+                        },
+                        {
+                            img: "/images/lad.jpeg",
+                            title: "Lad",
+                            desc: "Salad anggur laut segar yang renyah dan menyegarkan, perpaduan rasa laut alami dengan kelapa parut, bawang merah, dan cabai khas Pulau Kei.",
+                        },
+                        {
+                            img: "/images/embal-love.png",
+                            title: "Embal Love",
+                            desc: "Cemilan manis dari tepung singkong berbentuk hati, gurih dan tahan lama, cocok disemil saat santai bersama teh atau kopi",
+                        },
+                        {
+                            img: "/images/kue-asida.png",
+                            title: "Kue Asida",
+                            desc: "Puding kenyal manis ala Maluku yang mirip dodol, diperkaya rempah seperti cinnamon dan cardamom, biasanya hadir saat Ramadan",
+                        },
+                        {
+                            img: "/images/kue-lontar.png",
+                            title: "Kue Lontar",
+                            desc: "Pie susu khas Papua-Tual berkulit keemasan dengan isian lembut susu kental manis dan kuning telur, sempurna untuk sajian istimewa",
+                        },
+                    ].map((food) => (
+                        <div
+                            key={food.title}
+                            className={
+                                responsiveClass(
+                                    "relative w-24 h-28 rounded-xl flex-shrink-0 group transition-all duration-300", // mobile
+                                    "relative w-32 h-36 rounded-2xl flex-shrink-0 group transition-all duration-300", // tablet
+                                    "relative w-64 h-72 rounded-3xl group transition-all duration-300" // desktop
+                                )
+                            }
                         >
-                            Lad
-                        </h3>
-                        <p
-                            className={responsiveClass(
-                                "text-white text-xs font-normal font-['Albert_Sans'] leading-tight text-center", // mobile
-                                "text-white text-sm font-normal font-['Albert_Sans'] leading-relaxed text-center", // tablet
-                                "text-white text-lg font-normal font-['Albert_Sans'] leading-relaxed text-center" // desktop
-                            )}
-                        >
-                            Salad anggur laut segar yang renyah dan menyegarkan, perpaduan
-                            rasa laut alami dengan kelapa parut, bawang merah, dan cabai khas
-                            Pulau Kei.
-                        </p>
-                    </div>
-
-                    {[...Array(3)].map((_, i) => (
-                        <img
-                            key={i}
-                            src={`https://images.unsplash.com/photo-${1565299624946 + i
-                                }-b28f40a0ca4b?w=150&h=180&fit=crop`}
-                            alt={`Local dish ${i + 2}`}
-                            className={responsiveClass(
-                                "w-24 h-28 rounded-xl object-cover flex-shrink-0", // mobile
-                                "w-32 h-36 rounded-2xl object-cover flex-shrink-0", // tablet
-                                "w-48 h-56 rounded-3xl object-cover" // desktop
-                            )}
-                        />
+                            <img
+                                src={food.img}
+                                alt={food.title}
+                                className={
+                                    responsiveClass(
+                                        "w-full h-full object-cover rounded-xl transition-all duration-300 group-hover:scale-105", // mobile
+                                        "w-full h-full object-cover rounded-2xl transition-all duration-300 group-hover:scale-110", // tablet
+                                        "w-full h-full object-cover rounded-3xl transition-all duration-300 group-hover:scale-115" // desktop
+                                    )
+                                }
+                            />
+                            {/* Overlay on hover */}
+                            <div
+                                className={
+                                    responsiveClass(
+                                        "absolute inset-0 bg-gradient-to-b from-black/0 via-black/60 to-emerald-900 rounded-xl flex flex-col justify-end items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300", // mobile
+                                        "absolute inset-0 bg-gradient-to-b from-black/0 via-black/60 to-emerald-900 rounded-2xl flex flex-col justify-end items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300", // tablet
+                                        "absolute inset-0 bg-gradient-to-b from-black/0 via-black/60 to-emerald-900 rounded-3xl flex flex-col justify-end items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300" // desktop
+                                    )
+                                }
+                                style={{ padding: "1rem" }}
+                            >
+                                <h3
+                                    className={responsiveClass(
+                                        "text-white text-lg font-bold font-['Montserrat'] mb-1 text-left w-full", // mobile
+                                        "text-white text-xl font-bold font-['Montserrat'] mb-2 text-left w-full", // tablet
+                                        "text-white text-2xl font-bold font-['Montserrat'] mb-2 text-left w-full" // desktop
+                                    )}
+                                >
+                                    {food.title}
+                                </h3>
+                                <p
+                                    className={responsiveClass(
+                                        "text-white text-xs font-normal font-['Albert_Sans'] leading-tight text-left w-full", // mobile
+                                        "text-white text-sm font-normal font-['Albert_Sans'] leading-relaxed text-left w-full", // tablet
+                                        "text-white text-base font-normal font-['Albert_Sans'] leading-relaxed text-left w-full" // desktop
+                                    )}
+                                >
+                                    {food.desc}
+                                </p>
+                            </div>
+                        </div>
                     ))}
                 </div>
             </section>
@@ -610,7 +690,7 @@ const VillageWebsite = () => {
                             className={responsiveClass(
                                 "text-emerald-900 text-lg font-bold font-['Montserrat'] mb-2", // mobile
                                 "text-emerald-900 text-2xl font-bold font-['Montserrat'] mb-3", // tablet
-                                "text-emerald-900 text-3xl font-bold font-['Montserrat'] mb-4" // desktop
+                                "text-emerald-900 text-4xl font-bold font-['Montserrat'] mb-4" // desktop
                             )}
                         >
                             Jelajahi Keindahan Ohoi Ngadi
@@ -619,7 +699,7 @@ const VillageWebsite = () => {
                             className={responsiveClass(
                                 "text-black text-sm font-normal font-['Albert_Sans'] leading-tight", // mobile
                                 "text-black text-lg font-normal font-['Albert_Sans'] leading-relaxed", // tablet
-                                "text-black text-xl font-normal font-['Albert_Sans'] leading-relaxed" // desktop
+                                "text-black text-3xl font-normal font-['Albert_Sans'] leading-relaxed" // desktop
                             )}
                         >
                             Akses lokasi, rute terbaik, dan fasilitas umum tersedia di sini
@@ -635,20 +715,25 @@ const VillageWebsite = () => {
                         )}
                     >
                         {[
-                            { icon: MapPin, label: "Tempat Wisata" },
-                            { icon: MapPin, label: "Masjid" },
-                            { icon: MapPin, label: "Gereja" },
-                            { icon: MapPin, label: "Tempat Makan" },
-                            { icon: MapPin, label: "Puskesmas" },
+                            { icon: "/icon/favorite-green.png", label: "Tempat Wisata" },
+                            { icon: "/icon/mosque-green.png", label: "Masjid" },
+                            { icon: "/icon/church-green.png", label: "Gereja" },
+                            { icon: "/icon/restaurant-green.png", label: "Tempat Makan" },
+                            { icon: "/icon/hospital-green.png", label: "Puskesmas" },
                         ].map((item, index) => (
                             <div key={index} className="flex items-center gap-3 mb-2">
-                                <div className="w-6 h-8 bg-emerald-900 border-2 border-white"></div>
-                                <item.icon className="w-4 h-4 text-white" />
+                                <span className="w-10 h-10 flex items-center justify-center">
+                                    <img
+                                        src={item.icon}
+                                        alt={item.label}
+                                        className="w-10 h-10 object-contain"
+                                    />
+                                </span>
                                 <span
                                     className={responsiveClass(
-                                        "text-emerald-900 text-xs font-normal", // mobile
-                                        "text-emerald-900 text-sm font-normal", // tablet
-                                        "text-emerald-900 text-base font-normal" // desktop
+                                        "text-emerald-900 text-xs font-normal",
+                                        "text-emerald-900 text-sm font-normal",
+                                        "text-emerald-900 text-xl font-normal"
                                     )}
                                 >
                                     {item.label}
@@ -661,21 +746,52 @@ const VillageWebsite = () => {
                 {/* Map */}
                 <div
                     className={responsiveClass(
-                        "mt-6 w-full h-36 bg-emerald-900/20 border-4 border-emerald-900 rounded-lg", // mobile
-                        "mt-8 w-full h-48 bg-emerald-900/20 border-4 border-emerald-900 rounded-lg", // tablet
-                        "mt-10 w-full h-64 bg-emerald-900/20 border-8 border-emerald-900 rounded-lg" // desktop
+                        "mt-6 w-full h-36  rounded-lg relative overflow-hidden", // mobile
+                        "mt-8 w-full h-48  rounded-lg relative overflow-hidden", // tablet
+                        "mt-10 w-full h-96  rounded-lg relative overflow-hidden" // desktop
                     )}
                 >
-                    {/* Map pins would be placed here */}
-                    <div className="w-full h-full flex items-center justify-center">
-                        <div
-                            className={responsiveClass(
-                                "w-4 h-5 bg-emerald-900 border-2 border-white", // mobile
-                                "w-6 h-8 bg-emerald-900 border-2 border-white", // tablet
-                                "w-8 h-10 bg-emerald-900 border-2 border-white" // desktop
-                            )}
-                        ></div>
-                    </div>
+                    {/* Map image */}
+                    <img
+                        src="/images/map-full.png"
+                        alt="Map"
+                        className="absolute inset-0 w-full h-full object-contain pointer-events-none"
+                        style={{ zIndex: 1 }}
+                    />
+                    {/* Pins
+                    {mapPins.map((pin, idx) => (
+                        <button
+                            key={idx}
+                            type="button"
+                            style={{
+                                position: "absolute",
+                                left: pin.x,
+                                top: pin.y,
+                                transform: "translate(-50%, -100%)",
+                                zIndex: 2,
+                                cursor: "pointer",
+                                background: "none",
+                                border: "none",
+                                padding: 0,
+                            }}
+                            onClick={() => setActivePin(idx)}
+                        >
+                            <img
+                                src={
+                                    activePin === idx
+                                        ? iconFiles[pin.icon].green
+                                        : iconFiles[pin.icon].grey
+                                }
+                                alt={pin.label}
+                                className={responsiveClass(
+                                    "w-6 h-8", // mobile
+                                    "w-8 h-10", // tablet
+                                    "w-10 h-12" // desktop
+                                )}
+                                draggable={false}
+                            />
+                        </button>
+                    ))} */}
                 </div>
             </section>
 
