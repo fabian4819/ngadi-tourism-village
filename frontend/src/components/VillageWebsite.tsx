@@ -1,68 +1,26 @@
 import { useState } from "react";
 import { twMerge } from "tailwind-merge";
-import {
-    ChevronDown,
-    ChevronUp,
-    Play,
-    Phone,
-    Mail,
-    Instagram,
-    Facebook,
-    Youtube
-} from "lucide-react";
+import { Play } from "lucide-react"; // Only Play is directly used here now
+// Removed Phone, Mail, Instagram, Facebook, Youtube as they are in FooterSection
+// Removed ChevronDown, ChevronUp as they are in Navbar
+
+// Import the new components
+import Navbar from "./Navbar";
+import FooterSection from "./FooterSection";
+
+// Keep these components as they are not extracted from the main file, but used by it
 import OrganizationChart from "./OrganizationChart";
-import MobileMenu from "./MobileMenu";
 import ArticleSection from "./ArticleSection";
 import InfoSection from "./InfoSection";
-import { useBreakpoint, getResponsiveValue } from "../hooks/useBreakpoint"; // Import the hook and utility
+
+import { useBreakpoint, getResponsiveValue } from "../hooks/useBreakpoint";
 
 const VillageWebsite = () => {
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    // The state for mobile menu and dropdown is now managed within Navbar,
+    // so we don't need isMobileMenuOpen, isOpen, toggleDropdown here anymore.
+    const [showYoutube, setShowYoutube] = useState(false); // This state is still relevant here
+
     const currentBreakpoint = useBreakpoint(); // Get the current breakpoint
-    const [isOpen, setIsOpen] = useState(false);
-    const [showYoutube, setShowYoutube] = useState(false);
-
-    const toggleDropdown = () => {
-        setIsOpen(!isOpen);
-    };
-
-    // type PinIcon = "star" | "mosque" | "church" | "utensils" | "hospital";
-
-    // const mapPins: { x: string; y: string; icon: PinIcon; label: string }[] = [
-    //     { x: "15%", y: "20%", icon: "star", label: "Tempat Wisata" },
-    //     { x: "80%", y: "25%", icon: "mosque", label: "Masjid" },
-    //     { x: "90%", y: "35%", icon: "church", label: "Gereja" },
-    //     { x: "70%", y: "40%", icon: "utensils", label: "Tempat Makan" },
-    //     { x: "20%", y: "35%", icon: "hospital", label: "Puskesmas" },
-    //     { x: "50%", y: "30%", icon: "utensils", label: "Tempat Makan" },
-    //     { x: "40%", y: "60%", icon: "utensils", label: "Tempat Makan" },
-    //     { x: "60%", y: "80%", icon: "utensils", label: "Tempat Makan" },
-    // ];
-
-    // const iconFiles: Record<PinIcon, { grey: string; green: string }> = {
-    //     star: {
-    //         grey: "/icon/favorite-grey.png",
-    //         green: "/icon/favorite-green.png",
-    //     },
-    //     mosque: {
-    //         grey: "/icon/mosque-grey.png",
-    //         green: "/icon/mosque-green.png",
-    //     },
-    //     church: {
-    //         grey: "/icon/church-grey.png",
-    //         green: "/icon/church-green.png",
-    //     },
-    //     utensils: {
-    //         grey: "/icon/restaurant-grey.png",
-    //         green: "/icon/restaurant-green.png",
-    //     },
-    //     hospital: {
-    //         grey: "/icon/hospital-grey.png",
-    //         green: "/icon/hospital-green.png",
-    //     },
-    // };
-
-    // const [activePin, setActivePin] = useState<number | null>(null);
 
     // Utility function for responsive classes
     const responsiveClass = (
@@ -75,134 +33,13 @@ const VillageWebsite = () => {
             tablet,
             desktop,
         };
-        return twMerge(getResponsiveValue(values, currentBreakpoint) || mobile); // Use getResponsiveValue
+        return twMerge(getResponsiveValue(values, currentBreakpoint) || mobile);
     };
 
     return (
         <div className="min-h-screen bg-white overflow-hidden">
-            {/* Mobile Menu */}
-            <MobileMenu
-                isOpen={isMobileMenuOpen}
-                onClose={() => setIsMobileMenuOpen(false)}
-            />
-
-            {/* Header */}
-            <header
-                className={responsiveClass(
-                    "w-full px-3 py-6", // mobile
-                    "px-10 py-8", // tablet
-                    "px-12 py-10" // desktop
-                )}
-            >
-                <nav
-                    className={responsiveClass(
-                        "flex items-center justify-between", // mobile
-                        "flex items-center justify-between", // tablet
-                        "flex items-center justify-between" // desktop
-                    )}
-                >
-                    {/* Logo */}
-                    <div
-                        className={responsiveClass(
-                            "flex items-center gap-2", // mobile
-                            "flex items-center gap-2", // tablet
-                            "flex items-center gap-2" // desktop
-                        )}
-                    >
-                        <img
-                            src="/images/title.png"
-                            alt="Tualang Tual"
-                            className={responsiveClass(
-                                "h-[30px] w-auto", // mobile
-                                "h-[46.57px] w-auto", // tablet
-                                "h-[58.21px] w-auto" // desktop
-                            )}
-                        />
-                    </div>
-
-                    {/* Desktop Navigation */}
-                    <div
-                        className={responsiveClass(
-                            "hidden", // mobile
-                            "hidden", // tablet
-                            "flex items-center gap-6" // desktop
-                        )}
-                    >
-                        <div className="flex items-center gap-8 px-5 py-3 rounded-full border border-stone-900">
-                            <a href="#" className="text-stone-900 text-sm font-medium">
-                                Artikel
-                            </a>
-                            {/* Changed from span to a tag for redirection */}
-                            <a href="#" className="text-stone-900 text-sm font-medium">
-                                Tes BMI
-                            </a>
-                        </div>
-                        <div className="relative inline-block">
-                            {/* Tombol Kenali Desa */}
-                            <div
-                                className={`
-                                    flex items-center justify-between px-5 py-3 bg-emerald-900 text-white text-sm font-bold cursor-pointer
-                                    border border-emerald-900
-                                    rounded-t-3xl rounded-b-3xl
-                                `}
-                                onClick={toggleDropdown}
-                                style={{
-                                    borderBottomLeftRadius: isOpen ? 0 : '1.5rem',
-                                    borderBottomRightRadius: isOpen ? 0 : '1.5rem',
-                                }}
-                            >
-                                <span>Kenali Desa</span>
-                                {isOpen ? (
-                                    <ChevronUp className="w-6 h-6 text-white transition-transform duration-200" />
-                                ) : (
-                                    <ChevronDown className="w-6 h-6 text-white transition-transform duration-200" />
-                                )}
-                            </div>
-
-                            {/* Dropdown Content */}
-                            {isOpen && (
-                                <div className="absolute left-0 right-0 z-10">
-                                    <div className="bg-white border-x border-b border-emerald-900 rounded-b-3xl overflow-hidden shadow-lg">
-                                        <div className="flex flex-col">
-                                            {/* Item: Ohoi Dullah */}
-                                            <button
-                                                type="button"
-                                                className="px-5 py-2 border-b border-emerald-900 text-left hover:bg-emerald-50 focus:bg-emerald-100 transition"
-                                            >
-                                                <span className="text-emerald-900 text-sm font-medium">
-                                                    Ohoi Dullah
-                                                </span>
-                                            </button>
-                                            {/* Item: Ohoi Labetawi */}
-                                            <button
-                                                type="button"
-                                                className="px-5 py-2 text-left hover:bg-emerald-50 focus:bg-emerald-100 transition"
-                                            >
-                                                <span className="text-emerald-900 text-sm font-medium">
-                                                    Ohoi Labetawi
-                                                </span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            )}
-                        </div>
-                    </div>
-
-                    {/* Mobile Menu Button */}
-                    <button
-                        className={responsiveClass(
-                            "p-2 bg-emerald-900 rounded-full", // mobile
-                            "p-2 bg-emerald-900 rounded-full", // tablet
-                            "hidden" // desktop
-                        )}
-                        onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        aria-label="Open menu"
-                    >
-                        <div className="w-3 h-2 bg-white"></div>
-                    </button>
-                </nav>
-            </header>
+            {/* Navbar Component */}
+            <Navbar />
 
             {/* Hero Section */}
             <section
@@ -611,9 +448,9 @@ const VillageWebsite = () => {
                             key={food.title}
                             className={
                                 responsiveClass(
-                                    "relative w-24 h-28 rounded-xl flex-shrink-0 group transition-all duration-300", // mobile
-                                    "relative w-32 h-36 rounded-2xl flex-shrink-0 group transition-all duration-300", // tablet
-                                    "relative w-64 h-72 rounded-3xl group transition-all duration-300" // desktop
+                                    "relative w-24 h-28 rounded-xl flex-shrink-0 group transition-all duration-300 hover:scale-105", // mobile: Hover scale
+                                    "relative w-32 h-36 rounded-2xl flex-shrink-0 group transition-all duration-300 hover:scale-110", // tablet: Hover scale
+                                    "relative w-64 h-72 rounded-3xl group transition-all duration-300 hover:scale-115" // desktop: Hover scale
                                 )
                             }
                         >
@@ -622,9 +459,9 @@ const VillageWebsite = () => {
                                 alt={food.title}
                                 className={
                                     responsiveClass(
-                                        "w-full h-full object-cover rounded-xl transition-all duration-300 group-hover:scale-105", // mobile
-                                        "w-full h-full object-cover rounded-2xl transition-all duration-300 group-hover:scale-110", // tablet
-                                        "w-full h-full object-cover rounded-3xl transition-all duration-300 group-hover:scale-115" // desktop
+                                        "w-full h-full object-cover rounded-xl transition-all duration-300",
+                                        "w-full h-full object-cover rounded-2xl transition-all duration-300",
+                                        "w-full h-full object-cover rounded-3xl transition-all duration-300"
                                     )
                                 }
                             />
@@ -666,9 +503,9 @@ const VillageWebsite = () => {
             {/* Map Section */}
             <section
                 className={responsiveClass(
-                    "px-3 py-8", // mobile
-                    "px-5 py-12", // tablet
-                    "px-12 py-16" // desktop
+                    "px-3 py-8 relative", // mobile
+                    "px-5 py-12 relative", // tablet
+                    "px-12 py-16 relative" // desktop
                 )}
             >
                 <div
@@ -745,7 +582,7 @@ const VillageWebsite = () => {
                 {/* Map */}
                 <div
                     className={responsiveClass(
-                        "mt-6 w-full h-36  rounded-lg relative overflow-hidden", // mobile
+                        "mt-6 w-full h-36  rounded-lg relative", // mobile
                         "mt-8 w-full h-48  rounded-lg relative overflow-hidden", // tablet
                         "mt-10 w-full h-96  rounded-lg relative overflow-hidden" // desktop
                     )}
@@ -792,194 +629,126 @@ const VillageWebsite = () => {
                         </button>
                     ))} */}
                 </div>
-            </section>
-
-            {/* Organization Chart */}
-            <OrganizationChart
-                className={responsiveClass(
-                    "px-3 py-8 ml-0", // mobile
-                    "px-5 py-12 ml-12", // tablet
-                    "px-12 py-16 ml-8" // desktop
-                )}
-            />
-
-            {/* Article Section */}
-            <ArticleSection
-                className={responsiveClass(
-                    "px-3 py-8 ml-0", // mobile
-                    "px-5 py-12 ml-12", // tablet
-                    "px-12 py-16 ml-8" // desktop
-                )} />
-
-            {/* Info Section */}
-            <InfoSection
-                className={responsiveClass(
-                    "px-3 py-8 ml-0", // mobile
-                    "px-5 py-12 ml-12", // tablet
-                    "px-12 py-16 ml-8" // desktop
-                )} />
-
-            {/* Location Section */}
-            <section
-                className={responsiveClass(
-                    "px-3 py-8", // mobile
-                    "px-5 py-12", // tablet
-                    "px-12 py-16" // desktop
-                )}
-            >
+                {/* Addition Asset */}
                 <div
                     className={responsiveClass(
-                        "mb-6", // mobile
-                        "mb-8", // tablet
-                        "mb-10" // desktop
+                        "hidden", // mobile
+                        "block absolute right-0 bottom-0", // tablet
+                        "block absolute right-0 bottom-0" // desktop
                     )}
-                >
-                    <h2
-                        className={responsiveClass(
-                            "text-emerald-900 text-lg font-bold font-['Montserrat'] mb-2", // mobile
-                            "text-emerald-900 text-2xl font-bold font-['Montserrat'] mb-3", // tablet
-                            "text-emerald-900 text-4xl font-bold font-['Montserrat'] mb-4" // desktop
-                        )}
-                    >
-                        Peta Lokasi
-                    </h2>
-                    <p
-                        className={responsiveClass(
-                            "text-black text-sm font-normal font-['Albert_Sans'] leading-tight", // mobile
-                            "text-black text-lg font-normal font-['Albert_Sans'] leading-relaxed", // tablet
-                            "text-black text-3xl font-normal font-['Albert_Sans'] leading-relaxed" // desktop
-                        )}
-                    >
-                        Temukan <span className="italic">katong</span> disini!
-                    </p>
-                </div>
-
-                {/* Map Placeholder */}
-                <div
-                    className={responsiveClass(
-                        "w-full h-48 rounded-lg overflow-hidden flex items-end", // mobile
-                        "w-full h-64 rounded-lg overflow-hidden flex items-end", // tablet
-                        "w-[900px] rounded-lg overflow-hidden flex items-end" // desktop
-                    )}
-                    style={{ marginBottom: 0 }}
+                    style={{ zIndex: 0, pointerEvents: "none" }}
                 >
                     <img
-                        src="/images/lokasi.png"
-                        alt="Lokasi Ohoi Ngadi"
-                        className="w-full h-full object-contain"
-                        style={{ display: "block", marginLeft: 0, marginBottom: 0 }}
-                        draggable={false}
+                        src="/images/addition-asset.png"
+                        alt="Additional Asset"
+                        className={responsiveClass(
+                            "w-20 h-auto", // mobile
+                            "w-24 h-auto", // tablet
+                            "w-56 h-auto" // desktop
+                        )}
                     />
                 </div>
             </section>
 
-            {/* Footer */}
-            <footer className="w-full bg-emerald-900 px-6 py-12">
-                <div
+            {/* Section containing Organization Chart and the new asset */}
+            <div className="relative">
+                <OrganizationChart
                     className={responsiveClass(
-                        "flex flex-col gap-8", // mobile
-                        "flex flex-col gap-10", // tablet
-                        "flex flex-row justify-between items-start gap-12" // desktop
+                        "px-3 py-8 ml-0", // mobile
+                        "px-5 py-12 ml-12", // tablet
+                        "px-12 py-16 ml-8 mr-8" // desktop
+                    )}
+                />
+            </div>
+
+
+            <div className="relative">
+                {/* Background Asset hanya satu, di kanan */}
+                <img
+                    src="/images/vector-asset.png"
+                    alt="Background Asset"
+                    className={responsiveClass(
+                        "hidden", // mobile
+                        "block absolute right-0 top-0 w-[320px] h-auto opacity-40 pointer-events-none z-10", // tablet
+                        "block absolute right-0 top-0 w-[900px] h-auto opacity-40 pointer-events-none z-10" // desktop
+                    )}
+                />
+
+                {/* Article Section */}
+                <ArticleSection
+                    className={responsiveClass(
+                        "px-3 py-8 ml-0 relative z-10", // mobile
+                        "px-5 py-12 ml-12 relative z-10", // tablet
+                        "px-12 py-16 ml-8 mr-8 relative z-10" // desktop
+                    )}
+                />
+
+                {/* Info Section */}
+                <InfoSection
+                    className={responsiveClass(
+                        "px-3 py-8 ml-0 relative z-10", // mobile
+                        "px-5 py-12 ml-12 relative z-10", // tablet
+                        "px-12 py-16 ml-8 mr-8 relative z-10" // desktop
+                    )}
+                />
+
+                {/* Location Section */}
+                <section
+                    className={responsiveClass(
+                        "px-3 py-8 relative z-10", // mobile
+                        "px-5 py-12 relative z-10", // tablet
+                        "px-12 py-16 relative z-10" // desktop
                     )}
                 >
-                    {/* Logo and Info */}
                     <div
                         className={responsiveClass(
-                            "flex flex-col gap-4", // mobile
-                            "flex flex-col gap-6", // tablet
-                            "flex flex-col gap-6" // desktop
+                            "mb-6", // mobile
+                            "mb-8", // tablet
+                            "mb-10" // desktop
                         )}
                     >
-                        <div className="flex items-center gap-1">
-                            <img
-                                src="/images/title-footer.png"
-                                alt="Tualang Tual"
-                                className={responsiveClass(
-                                    "h-[30px] w-auto", // mobile
-                                    "h-[46.57px] w-auto", // tablet
-                                    "h-[100px] w-auto" // desktop
-                                )}
-                            />
-                            <div className="w-24 h-0 border-t border-white transform -rotate-90"></div>
-                            <img
-                                src="/images/logo-maren.png"
-                                alt="Logo"
-                                className="w-20"
-                            />
-                        </div>
-                        <div>
-                            <h3 className="text-white text-xl font-semibold font-['Montserrat'] mb-2">
-                                Desa Ngadi
-                            </h3>
-                            <p className="text-white text-base font-normal font-['Albert_Sans'] mb-1">
-                                Pulau Dullah Utara, Kota Tual, Maluku, Indonesia
-                            </p>
-                            <p className="text-white text-base font-semibold font-['Montserrat']">
-                                Tim KKN-PPM UGM © 2025
-                            </p>
-                        </div>
+                        <h2
+                            className={responsiveClass(
+                                "text-emerald-900 text-lg font-bold font-['Montserrat'] mb-2", // mobile
+                                "text-emerald-900 text-2xl font-bold font-['Montserrat'] mb-3", // tablet
+                                "text-emerald-900 text-4xl font-bold font-['Montserrat'] mb-4" // desktop
+                            )}
+                        >
+                            Peta Lokasi
+                        </h2>
+                        <p
+                            className={responsiveClass(
+                                "text-black text-sm font-normal font-['Albert_Sans'] leading-tight", // mobile
+                                "text-black text-lg font-normal font-['Albert_Sans'] leading-relaxed", // tablet
+                                "text-black text-3xl font-normal font-['Albert_Sans'] leading-relaxed" // desktop
+                            )}
+                        >
+                            Temukan <span className="italic">katong</span> disini!
+                        </p>
                     </div>
 
-                    {/* Contact Info */}
+                    {/* Map Placeholder */}
                     <div
                         className={responsiveClass(
-                            "flex flex-col gap-6", // mobile
-                            "flex flex-col gap-8", // tablet
-                            "flex flex-row gap-12" // desktop
+                            "w-full h-48 rounded-lg overflow-hidden flex items-end", // mobile
+                            "w-full h-64 rounded-lg overflow-hidden flex items-end", // tablet
+                            "w-[900px] rounded-lg overflow-hidden flex items-end" // desktop
                         )}
+                        style={{ marginBottom: 0 }}
                     >
-                        <div>
-                            <h4 className="text-white text-base font-bold font-['Montserrat'] mb-4">
-                                Pemerintah Desa Ngadi
-                            </h4>
-                            <div className="space-y-3">
-                                <div className="flex items-center gap-4">
-                                    <Facebook className="w-6 h-6 text-white" />
-                                    <span className="text-white text-lg font-semibold">
-                                        Pemerintah Ohoi Ngadi
-                                    </span>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                    <Phone className="w-6 h-6 text-white" />
-                                    <span className="text-white text-lg font-semibold">
-                                        (021) 1234-567
-                                    </span>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                    <Mail className="w-6 h-6 text-white" />
-                                    <span className="text-white text-lg font-semibold">
-                                        ngadi@tualkota.go.id
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h4 className="text-white text-base font-bold font-['Montserrat'] mb-4">
-                                Tim KKN-PPM UGM
-                            </h4>
-                            <div className="space-y-3">
-                                <div className="flex items-center gap-4">
-                                    <div className="flex gap-1">
-                                        <Instagram className="w-6 h-6 text-white" />
-                                        <Facebook className="w-6 h-6 text-white" />
-                                        <Youtube className="w-6 h-6 text-white" />
-                                    </div>
-                                    <span className="text-white text-lg font-semibold">
-                                        tualang.tual
-                                    </span>
-                                </div>
-                                <div className="flex items-center gap-4">
-                                    <Mail className="w-6 h-6 text-white" />
-                                    <span className="text-white text-lg font-semibold">
-                                        kknppmugm.kotatual@gmail.com
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
+                        <img
+                            src="/images/lokasi.png"
+                            alt="Lokasi Ohoi Ngadi"
+                            className="w-full h-full object-contain"
+                            style={{ display: "block", marginLeft: 0, marginBottom: 0 }}
+                            draggable={false}
+                        />
                     </div>
-                </div>
-            </footer>
+                </section>
+            </div>
+
+            {/* FooterSection Component */}
+            <FooterSection />
         </div>
     );
 };

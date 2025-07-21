@@ -40,3 +40,8 @@ body {
   font-family: 'Vivaldi'; /* This name MUST match the name in tailwind.config.js */
   src: url('./fonts/vivaldi.ttf') format('truetype');
 }
+
+@font-face {
+  font-family: 'Cormorant'; /* This name MUST match the name in tailwind.config.js */
+  src: url('./fonts/cormorant.ttf') format('truetype');
+}

@@ -1,4 +1,7 @@
+// src/components/ArticleSection.tsx
 import { twMerge } from 'tailwind-merge';
+import { Link } from 'react-router-dom'; // Import Link
+import { useBreakpoint, getResponsiveValue } from "../hooks/useBreakpoint"; // Import these for responsiveClass
 
 interface ArticleSectionProps {
   className?: string;
@@ -12,8 +15,19 @@ interface Article {
 }
 
 const ArticleSection = ({ className = "" }: ArticleSectionProps) => {
-  const responsiveClass = (base: string, md?: string, lg?: string) => {
-    return twMerge(base, md && `md:${md}`, lg && `lg:${lg}`);
+  const currentBreakpoint = useBreakpoint(); // Get the current breakpoint
+
+  const responsiveClass = (
+    mobile: string,
+    tablet?: string,
+    desktop?: string
+  ) => {
+    const values = {
+      mobile,
+      tablet,
+      desktop,
+    };
+    return twMerge(getResponsiveValue(values, currentBreakpoint) || mobile);
   };
 
   const articles: Article[] = [
@@ -65,8 +79,9 @@ const ArticleSection = ({ className = "" }: ArticleSectionProps) => {
             Akses cerita dan artikel katong dibawah ini
           </p>
         </div>
-        <a
-          href="#"
+        {/* Changed to Link */}
+        <Link
+          to="/artikel" // Link to the new articles page
           className={responsiveClass(
             "text-emerald-900 text-xs font-normal font-['Albert_Sans'] text-right underline decoration-emerald-900 hover:text-emerald-700", // mobile
             "text-emerald-900 text-base font-normal font-['Albert_Sans'] text-right underline decoration-emerald-900 hover:text-emerald-700", // tablet
@@ -75,7 +90,7 @@ const ArticleSection = ({ className = "" }: ArticleSectionProps) => {
           style={{ marginTop: 0 }}
         >
           Klik disini untuk melihat lebih banyak
-        </a>
+        </Link>
       </div>
 
       {/* Articles Grid */}
@@ -84,7 +99,7 @@ const ArticleSection = ({ className = "" }: ArticleSectionProps) => {
         "grid grid-cols-2 gap-6", // tablet: grid
         "grid grid-cols-3 gap-8" // desktop: grid
       )}>
-        {articles.map((article) => (
+        {articles.map((article) => ( // Corrected map syntax here
           <article
             key={article.id}
             className={responsiveClass(
