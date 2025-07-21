@@ -691,7 +691,7 @@ const VillageWebsite = () => {
                             <div className="self-stretch inline-flex justify-between items-center">
                                 <div className="flex justify-start items-center gap-3">
                                     <div className="justify-start text-emerald-900 text-3xl font-bold font-['Montserrat']">
-                                        Danau Waren
+                                        Ohoi Ngadi
                                     </div>
                                     <a
                                         href="https://maps.app.goo.gl/AsW2QwMHHR3Ckggt7"
