@@ -135,12 +135,7 @@ const ArticlesPage: React.FC = () => {
 
     return (
         <div className="min-h-screen bg-white flex flex-col relative overflow-hidden">
-            {/* Decorative Background Lines - Positioned relative to the main container */}
-            <div className="absolute top-0 left-0 w-full h-full pointer-events-none z-0">
-                {/* These values might need fine-tuning for different screen sizes */}
-                <div className="w-96 h-[1400.31px] absolute top-[543.37px] left-[912.58px] origin-top-left rotate-[139.77deg] opacity-40 outline outline-[1.50px] outline-offset-[-0.75px] outline-amber-300"></div>
-                <div className="w-[2011.69px] h-0.5 absolute top-[2208.60px] left-[303px] origin-top-left rotate-[-49.42deg] opacity-40 outline outline-[1.50px] outline-offset-[-0.75px] outline-amber-300"></div>
-            </div>
+        
 
             <Navbar />
             <main className={twMerge(

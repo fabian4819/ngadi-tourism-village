@@ -18,7 +18,8 @@ import { useBreakpoint, getResponsiveValue } from "../hooks/useBreakpoint";
 const VillageWebsite = () => {
     // The state for mobile menu and dropdown is now managed within Navbar,
     // so we don't need isMobileMenuOpen, isOpen, toggleDropdown here anymore.
-    const [showYoutube, setShowYoutube] = useState(false); // This state is still relevant here
+    const [youtubeUrl, setYoutubeUrl] = useState<string | null>(null);
+    const [showMapModal, setShowMapModal] = useState(false); // New state for map modal
 
     const currentBreakpoint = useBreakpoint(); // Get the current breakpoint
 
@@ -107,17 +108,16 @@ const VillageWebsite = () => {
                 {/* Hero Video */}
                 <div
                     className={responsiveClass(
-                        "w-full px-2 md:px-8 lg:px-20 box-border", // padding kiri-kanan
+                        "w-full px-2 md:px-8 lg:px-20 box-border", // mobile
                         "w-full px-8 box-border",
                         "w-full px-10 box-border"
                     )}
                 >
                     <div className="relative w-full aspect-video rounded-3xl overflow-hidden bg-white">
                         <video
-                            src="/videos/tual-video.mp4"
+                            src="/videos/ngadi-profile.mp4"
                             autoPlay
                             loop
-                            muted
                             playsInline
                             className="w-full h-full object-cover"
                         />
@@ -126,24 +126,57 @@ const VillageWebsite = () => {
                             <svg width="250" height="250" viewBox="0 0 250 250" fill="none">
                                 <path
                                     d="
-                M250,250
-                L250,125
-                A125,125 0 0 0 125,250
-                Z
-            "
+                        M250,250
+                        L250,125
+                        A125,125 0 0 0 125,250
+                        Z
+                    "
                                     fill="white"
                                 />
                             </svg>
                         </div>
-                        {/* Icon di pojok kanan bawah, posisikan di dalam lekukan */}
-                        <div className="absolute bottom-4 right-4 z-10">
-                            <svg width="70" height="70" viewBox="0 0 56 56" fill="none">
-                                <circle cx="28" cy="28" r="26" stroke="#14532d" strokeWidth="4" fill="white" />
-                                <path d="M28 18v16M28 34l6-6M28 34l-6-6" stroke="#14532d" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
-                            </svg>
-                        </div>
+                        {/* Play Icon Button */}
+                        <button
+                            className="absolute bottom-4 right-4 z-20 group focus:outline-none"
+                            style={{ transition: "transform 0.2s" }}
+                            onClick={() => setYoutubeUrl("https://www.youtube.com/embed/swtRHwOpWGs?autoplay=1")}
+                            aria-label="Tonton video profil Ohoi Ngadi"
+                        >
+                            <span className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-emerald-900 border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-200">
+                                <Play className="w-10 h-10 text-white group-hover:scale-110 transition-transform duration-200" />
+                            </span>
+                            <span className="absolute left-1/2 top-full mt-2 -translate-x-1/2 bg-white text-emerald-900 text-xs font-semibold px-3 py-1 rounded-full shadow opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                                Tonton Video
+                            </span>
+                        </button>
                     </div>
                 </div>
+
+                {youtubeUrl && (
+                    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+                        <div className="bg-white rounded-2xl shadow-2xl p-4 relative max-w-2xl w-full">
+                            <button
+                                className="absolute top-2 right-4 text-emerald-900 text-3xl font-bold hover:text-red-500 transition"
+                                onClick={() => setYoutubeUrl(null)}
+                                aria-label="Tutup"
+                            >
+                                ×
+                            </button>
+                            <div className="aspect-video w-full rounded-xl overflow-hidden">
+                                <iframe
+                                    width="100%"
+                                    height="100%"
+                                    src={youtubeUrl}
+                                    title="YouTube video"
+                                    frameBorder="0"
+                                    allow="autoplay; encrypted-media"
+                                    allowFullScreen
+                                    className="w-full h-full"
+                                ></iframe>
+                            </div>
+                        </div>
+                    </div>
+                )}
             </section>
 
             {/* Culture Section */}
@@ -222,7 +255,7 @@ const VillageWebsite = () => {
                                 "absolute bottom-6 right-[-28px] w-16 h-16" // desktop
                             )}
                             style={{ zIndex: 2, cursor: "pointer" }}
-                            onClick={() => setShowYoutube(true)}
+                            onClick={() => setYoutubeUrl("https://www.youtube.com/embed/VuRw_Pv2_Go?autoplay=1")}
                         >
                             <div className="w-full h-full bg-emerald-900 rounded-full border-4 border-white flex items-center justify-center shadow-lg">
                                 <Play className={responsiveClass("w-6 h-6", "w-7 h-7", "w-8 h-8") + " text-white"} />
@@ -232,14 +265,13 @@ const VillageWebsite = () => {
                 </div>
             </section>
 
-            {/* Modal YouTube */}
-            {showYoutube && (
+            {youtubeUrl && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
-                    <div className="bg-white rounded-2xl shadow-2xl p-4 relative max-w-xl w-full">
+                    <div className="bg-white rounded-2xl shadow-2xl p-4 relative max-w-2xl w-full">
                         <button
-                            className="absolute top-0 right-1 text-emerald-900 text-2xl font-bold"
-                            onClick={() => setShowYoutube(false)}
-                            aria-label="Close"
+                            className="absolute top-2 right-4 text-emerald-900 text-3xl font-bold hover:text-red-500 transition"
+                            onClick={() => setYoutubeUrl(null)}
+                            aria-label="Tutup"
                         >
                             ×
                         </button>
@@ -247,7 +279,7 @@ const VillageWebsite = () => {
                             <iframe
                                 width="100%"
                                 height="100%"
-                                src="https://www.youtube.com/embed/VuRw_Pv2_Go?autoplay=1"
+                                src={youtubeUrl}
                                 title="YouTube video"
                                 frameBorder="0"
                                 allow="autoplay; encrypted-media"
@@ -582,10 +614,11 @@ const VillageWebsite = () => {
                 {/* Map */}
                 <div
                     className={responsiveClass(
-                        "mt-6 w-full h-36  rounded-lg relative", // mobile
-                        "mt-8 w-full h-48  rounded-lg relative overflow-hidden", // tablet
-                        "mt-10 w-full h-96  rounded-lg relative overflow-hidden" // desktop
+                        "mt-6 w-full h-36  rounded-lg relative cursor-pointer", // mobile
+                        "mt-8 w-full h-48  rounded-lg relative overflow-hidden cursor-pointer", // tablet
+                        "mt-10 w-full h-96  rounded-lg relative overflow-hidden cursor-pointer" // desktop
                     )}
+                    onClick={() => setShowMapModal(true)} // Added onClick to show modal
                 >
                     {/* Map image */}
                     <img
@@ -649,6 +682,53 @@ const VillageWebsite = () => {
                     />
                 </div>
             </section>
+
+            {/* Map Modal */}
+            {showMapModal && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+                    <div className="px-10 py-7 bg-amber-300 rounded-xl inline-flex flex-col justify-start items-center gap-3.5 max-w-4xl w-full mx-4">
+                        <div className="w-full flex flex-col justify-start items-start gap-3.5">
+                            <div className="self-stretch inline-flex justify-between items-center">
+                                <div className="flex justify-start items-center gap-3">
+                                    <div className="justify-start text-emerald-900 text-3xl font-bold font-['Montserrat']">
+                                        Danau Waren
+                                    </div>
+                                    <a
+                                        href="https://maps.app.goo.gl/AsW2QwMHHR3Ckggt7"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="flex items-center"
+                                    >
+                                        {/* Ganti img dengan icon location */}
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            className="w-10 h-10 text-emerald-900"
+                                            fill="none"
+                                            viewBox="0 0 24 24"
+                                            stroke="currentColor"
+                                            strokeWidth={2}
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                strokeLinejoin="round"
+                                                d="M12 21c-4.418 0-8-5.373-8-10a8 8 0 1116 0c0 4.627-3.582 10-8 10zm0-7a3 3 0 100-6 3 3 0 000 6z"
+                                            />
+                                        </svg>
+                                    </a>
+                                </div>
+                                <button
+                                    className="w-6 h-6 bg-emerald-900 text-white flex items-center justify-center text-xl font-bold rounded"
+                                    onClick={() => setShowMapModal(false)}
+                                    aria-label="Tutup"
+                                >
+                                    &times;
+                                </button>
+                            </div>
+                        </div>
+                        <img className="self-stretch h-[630.34px] object-contain" src="/images/peta-ngadi.png" alt="Peta Ohoi Ngadi" />
+                    </div>
+                </div>
+            )}
 
             {/* Section containing Organization Chart and the new asset */}
             <div className="relative">
