@@ -3,6 +3,7 @@ import { twMerge } from "tailwind-merge";
 import { Play } from "lucide-react"; // Only Play is directly used here now
 // Removed Phone, Mail, Instagram, Facebook, Youtube as they are in FooterSection
 // Removed ChevronDown, ChevronUp as they are in Navbar
+import { Icon } from '@iconify/react';
 
 // Import the new components
 import Navbar from "./Navbar";
@@ -574,93 +575,65 @@ const VillageWebsite = () => {
                         </p>
                     </div>
 
-                    {/* Legend */}
-                    <div
-                        className={responsiveClass(
-                            "w-full p-3 rounded-lg border border-emerald-900", // mobile
-                            "w-full p-3 rounded-lg border border-emerald-900", // tablet
-                            "w-56 p-3 rounded-xl border border-emerald-900" // desktop
-                        )}
-                    >
-                        {[
-                            { icon: "/icon/favorite-green.png", label: "Tempat Wisata" },
-                            { icon: "/icon/mosque-green.png", label: "Masjid" },
-                            { icon: "/icon/church-green.png", label: "Gereja" },
-                            { icon: "/icon/restaurant-green.png", label: "Tempat Makan" },
-                            { icon: "/icon/hospital-green.png", label: "Puskesmas" },
-                        ].map((item, index) => (
-                            <div key={index} className="flex items-center gap-3 mb-2">
-                                <span className="w-10 h-10 flex items-center justify-center">
-                                    <img
-                                        src={item.icon}
-                                        alt={item.label}
-                                        className="w-10 h-10 object-contain"
-                                    />
-                                </span>
-                                <span
-                                    className={responsiveClass(
-                                        "text-emerald-900 text-xs font-normal",
-                                        "text-emerald-900 text-sm font-normal",
-                                        "text-emerald-900 text-xl font-normal"
-                                    )}
-                                >
-                                    {item.label}
-                                </span>
-                            </div>
-                        ))}
-                    </div>
+
                 </div>
 
-                {/* Map */}
+                {/* Map & Location List */}
                 <div
                     className={responsiveClass(
-                        "mt-6 w-full h-36  rounded-lg relative cursor-pointer", // mobile
-                        "mt-8 w-full h-48  rounded-lg relative overflow-hidden cursor-pointer", // tablet
-                        "mt-10 w-full h-96  rounded-lg relative overflow-hidden cursor-pointer" // desktop
+                        "w-full flex flex-col mt-10 gap-4", // mobile: stack
+                        "w-full flex flex-row mt-10 gap-8", // tablet: side by side
+                        "w-full flex flex-row mt-10 gap-12" // desktop: side by side
                     )}
-                    onClick={() => setShowMapModal(true)} // Added onClick to show modal
                 >
-                    {/* Map image */}
+                    {/* Map Image */}
                     <img
+                        className={responsiveClass(
+                            "w-full h-[260px] object-cover", // mobile
+                            "w-[737px] h-[400px] object-cover", // tablet
+                            "w-[60vw] object-cover" // desktop
+                        )}
                         src="/images/map-full.png"
-                        alt="Map"
-                        className="absolute inset-0 w-full h-full object-contain pointer-events-none"
-                        style={{ zIndex: 1 }}
+                        alt="Peta Ohoi Ngadi"
+                        draggable={false}
                     />
-                    {/* Pins
-                    {mapPins.map((pin, idx) => (
-                        <button
-                            key={idx}
-                            type="button"
-                            style={{
-                                position: "absolute",
-                                left: pin.x,
-                                top: pin.y,
-                                transform: "translate(-50%, -100%)",
-                                zIndex: 2,
-                                cursor: "pointer",
-                                background: "none",
-                                border: "none",
-                                padding: 0,
-                            }}
-                            onClick={() => setActivePin(idx)}
-                        >
-                            <img
-                                src={
-                                    activePin === idx
-                                        ? iconFiles[pin.icon].green
-                                        : iconFiles[pin.icon].grey
-                                }
-                                alt={pin.label}
-                                className={responsiveClass(
-                                    "w-6 h-8", // mobile
-                                    "w-8 h-10", // tablet
-                                    "w-10 h-12" // desktop
-                                )}
-                                draggable={false}
-                            />
-                        </button>
-                    ))} */}
+                    {/* Location List */}
+                    <div className={responsiveClass(
+                        "w-full flex flex-col gap-2 mt-4", // mobile
+                        "w-[30vw] flex flex-col gap-2 mt-0", // tablet
+                        "w-[30vw] flex flex-col gap-4 mt-0" // desktop
+                    )}>
+                        <div className="text-emerald-900 text-4xl font-bold font-['Montserrat'] mb-2">
+                            Akses Lokasi
+                        </div>
+                        {[
+                            { label: "Danau Waren", url: "https://maps.app.goo.gl/xxxx1" },
+                            { label: "Kolam Renang Dito Hills", url: "https://maps.app.goo.gl/xxxx2" },
+                            { label: "Homestay", url: "https://maps.app.goo.gl/xxxx3" },
+                            { label: "Lapangan Desa", url: "https://maps.app.goo.gl/xxxx4" },
+                            { label: "Masjid Al Mu’minun", url: "https://maps.app.goo.gl/xxxx5" },
+                            { label: "Gereja St. Paulus", url: "https://maps.app.goo.gl/xxxx6" },
+                        ].map((item) => (
+                            <a
+                                key={item.label}
+                                href={item.url}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="self-stretch px-3.5 py-[5px] bg-emerald-900 rounded-[10px] flex justify-between items-center hover:bg-emerald-800 transition"
+                                style={{ boxShadow: "0 2px 8px 0 rgba(20,83,45,0.08)" }}
+                            >
+                                <div className="text-white text-2xl md:text-3xl font-medium font-['Albert_Sans']">
+                                    {item.label}
+                                </div>
+                                <div className="w-10 h-10 relative overflow-hidden flex items-center justify-center">
+                                    <div className="w-9 h-9 absolute left-[1.65px] top-[1.65px] bg-white rounded-full flex items-center justify-center">
+                                        {/* Iconify Direction Icon */}
+                                        <Icon icon="ic:round-assistant-direction" className="w-6 h-6 text-emerald-900" />
+                                    </div>
+                                </div>
+                            </a>
+                        ))}
+                    </div>
                 </div>
                 {/* Addition Asset */}
                 <div
