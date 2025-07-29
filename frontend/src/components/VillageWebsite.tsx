@@ -52,57 +52,74 @@ const VillageWebsite = () => {
                 )}
             >
                 {/* Decorative Elements */}
-                <div className="relative flex items-center justify-center w-full">
-                    {/* Left Asset */}
+                <div className="relative flex flex-col items-center w-full">
+                    {/* Mobile Decorative Asset: di atas title */}
                     <div
                         className={responsiveClass(
-                            "hidden", // mobile
-                            "block absolute left-0 top-1/2 -translate-y-1/2", // tablet
-                            "block absolute left-0 top-1/2 -translate-y-1/2" // desktop
+                            "block w-full flex justify-center mb-2", // mobile: tampil di atas title, tidak absolute
+                            "hidden", // tablet
+                            "hidden"  // desktop
                         )}
-                        style={{ zIndex: 1 }}
                     >
                         <img
-                            src="/images/left-main-asset.png"
-                            alt="Left Asset"
-                            className={responsiveClass(
-                                "hidden", // mobile
-                                "w-20 h-auto", // tablet
-                                "w-[300px] h-auto" // desktop
-                            )}
+                            src="/images/mobile-top-asset.png"
+                            alt="Mobile Top Asset"
+                            className="w-[50vw] h-auto"
                         />
                     </div>
 
-                    {/* Title */}
-                    <h1
-                        className={responsiveClass(
-                            "text-emerald-900 text-4xl font-semibold font-['Vivaldi'] text-center", // mobile
-                            "text-emerald-900 text-6xl font-semibold font-['Vivaldi'] text-center", // tablet
-                            "text-emerald-900 text-9xl font-semibold font-['Vivaldi'] text-center" // desktop
-                        )}
-                        style={{ zIndex: 2 }}
-                    >
-                        Ohoi Ngadi
-                    </h1>
-
-                    {/* Right Asset */}
-                    <div
-                        className={responsiveClass(
-                            "hidden", // mobile
-                            "block absolute right-0 top-1/2 -translate-y-1/2", // tablet
-                            "block absolute right-0 top-1/2 -translate-y-1/2" // desktop
-                        )}
-                        style={{ zIndex: 1 }}
-                    >
-                        <img
-                            src="/images/right-main-asset.png"
-                            alt="Right Asset"
+                    <div className="relative flex items-center justify-center w-full">
+                        {/* Left Asset */}
+                        <div
                             className={responsiveClass(
                                 "hidden", // mobile
-                                "w-20 h-auto", // tablet
-                                "w-[300px] h-auto" // desktop
+                                "block absolute left-0 top-1/2 -translate-y-1/2", // tablet
+                                "block absolute left-0 top-1/2 -translate-y-1/2" // desktop
                             )}
-                        />
+                            style={{ zIndex: 1 }}
+                        >
+                            <img
+                                src="/images/left-main-asset.png"
+                                alt="Left Asset"
+                                className={responsiveClass(
+                                    "hidden", // mobile
+                                    "w-20 h-auto", // tablet
+                                    "w-[300px] h-auto" // desktop
+                                )}
+                            />
+                        </div>
+
+                        {/* Title */}
+                        <h1
+                            className={responsiveClass(
+                                "text-emerald-900 text-4xl font-semibold font-['Vivaldi'] text-center", // mobile
+                                "text-emerald-900 text-6xl font-semibold font-['Vivaldi'] text-center", // tablet
+                                "text-emerald-900 text-9xl font-semibold font-['Vivaldi'] text-center" // desktop
+                            )}
+                            style={{ zIndex: 2 }}
+                        >
+                            Ohoi Ngadi
+                        </h1>
+
+                        {/* Right Asset */}
+                        <div
+                            className={responsiveClass(
+                                "hidden", // mobile
+                                "block absolute right-0 top-1/2 -translate-y-1/2", // tablet
+                                "block absolute right-0 top-1/2 -translate-y-1/2" // desktop
+                            )}
+                            style={{ zIndex: 1 }}
+                        >
+                            <img
+                                src="/images/right-main-asset.png"
+                                alt="Right Asset"
+                                className={responsiveClass(
+                                    "hidden", // mobile
+                                    "w-20 h-auto", // tablet
+                                    "w-[300px] h-auto" // desktop
+                                )}
+                            />
+                        </div>
                     </div>
                 </div>
 
