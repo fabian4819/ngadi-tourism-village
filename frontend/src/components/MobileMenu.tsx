@@ -1,5 +1,6 @@
-// import { twMerge } from 'tailwind-merge';
 import { X, ChevronDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -7,14 +8,16 @@ interface MobileMenuProps {
 }
 
 const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-emerald-900 z-50 lg:hidden">
+    <div className="fixed inset-0 bg-emerald-900 z-50 lg:hidden overflow-hidden">
       {/* Header */}
       <div className="flex justify-between items-center px-4 py-6">
         <span className="text-white text-lg font-bold font-['Montserrat']">Menu</span>
-        <button 
+        <button
           onClick={onClose}
           className="p-2 bg-white rounded-full"
           aria-label="Close menu"
@@ -24,42 +27,81 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
       </div>
 
       {/* Menu Items */}
-      <div className="px-6 space-y-6">
-        <div className="text-white text-lg font-medium font-['Montserrat'] py-2">
+      <div className="px-6 space-y-6 z-10 relative">
+        <Link
+          to="/"
+          className="block text-white text-lg font-medium font-['Montserrat'] py-2"
+          onClick={onClose}
+        >
           Beranda
-        </div>
-        <div className="text-white text-lg font-medium font-['Montserrat'] py-2">
+        </Link>
+        <Link
+          to="/artikel"
+          className="block text-white text-lg font-medium font-['Montserrat'] py-2"
+          onClick={onClose}
+        >
           Artikel
-        </div>
-        <div className="text-white text-lg font-medium font-['Montserrat'] py-2">
+        </Link>
+        <Link
+          to="/tes-bmi"
+          className="block text-white text-lg font-medium font-['Montserrat'] py-2"
+          onClick={onClose}
+        >
           Tes BMI
-        </div>
-        
+        </Link>
         {/* Kenali Desa Dropdown */}
         <div className="space-y-3">
-          <div className="flex items-center gap-2">
+          <button
+            type="button"
+            className="flex items-center gap-2 w-full text-left"
+            onClick={() => setIsDropdownOpen((v) => !v)}
+          >
             <span className="text-white text-lg font-medium font-['Montserrat']">Kenali Desa</span>
-            <ChevronDown className="w-6 h-6 text-white" />
-          </div>
-          <div className="pl-5 space-y-3">
-            <div className="text-white text-lg font-medium font-['Montserrat']">
-              Ohoi Ngadi
+            <ChevronDown className={`w-6 h-6 text-white transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+          </button>
+          {isDropdownOpen && (
+            <div className="pl-5 space-y-3">
+              <Link
+                to="/kenali-desa/ngadi"
+                className="block text-white text-lg font-medium font-['Montserrat']"
+                onClick={onClose}
+              >
+                Ohoi Ngadi
+              </Link>
+              <Link
+                to="/kenali-desa/dullah"
+                className="block text-white text-lg font-medium font-['Montserrat']"
+                onClick={onClose}
+              >
+                Ohoi Dullah
+              </Link>
+              <Link
+                to="/kenali-desa/labetawi"
+                className="block text-white text-lg font-medium font-['Montserrat']"
+                onClick={onClose}
+              >
+                Ohoi Labetawi
+              </Link>
             </div>
-            <div className="text-white text-lg font-medium font-['Montserrat']">
-              Ohoi Dullah
-            </div>
-            <div className="text-white text-lg font-medium font-['Montserrat']">
-              Ohoi Labetawi
-            </div>
-          </div>
+          )}
         </div>
       </div>
 
-      {/* Decorative Elements */}
-      <div className="absolute bottom-0 left-0 right-0 opacity-20">
-        <div className="w-36 h-80 bg-emerald-200/20 transform rotate-12 absolute bottom-20 left-20"></div>
-        <div className="w-44 h-96 bg-emerald-200/20 transform -rotate-12 absolute bottom-0 right-10"></div>
-      </div>
+      {/* Decorative Images */}
+      <img
+        src="/images/mobile-asset.png"
+        alt=""
+        className="absolute left-0 bottom-0 w-full opacity-80 pointer-events-none select-none"
+        draggable={false}
+        style={{ zIndex: 1 }}
+      />
+      <img
+        src="/images/mobile-addition-asset.png"
+        alt=""
+        className="absolute right-0 bottom-0 w-60 md:w-60 opacity-80 pointer-events-none select-none"
+        draggable={false}
+        style={{ zIndex: 2 }}
+      />
     </div>
   );
 };
