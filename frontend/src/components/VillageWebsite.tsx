@@ -254,7 +254,7 @@ const VillageWebsite = () => {
                         </div>
                         <p
                             className={responsiveClass(
-                                "text-black text-sm font-medium font-['Albert_Sans'] leading-tight", // mobile
+                                "text-black text-lg font-medium font-['Albert_Sans'] leading-tight", // mobile
                                 "text-black text-lg font-medium font-['Albert_Sans'] leading-relaxed", // tablet
                                 "text-black text-2xl font-medium font-['Albert_Sans'] leading-relaxed" // desktop
                             )}
@@ -265,7 +265,7 @@ const VillageWebsite = () => {
                         </p>
                     </div>
 
-                    <div
+                    {/* <div
                         className={responsiveClass(
                             "w-full relative ml-0", // mobile
                             "w-64 relative ml-8", // tablet
@@ -280,9 +280,9 @@ const VillageWebsite = () => {
                                 "w-full h-36 rounded-3xl", // tablet
                                 "w-full h-44 rounded-3xl" // desktop
                             )}
-                        />
+                        /> */}
                         {/* Play icon: sebagian di luar gambar */}
-                        <div
+                        {/* <div
                             className={responsiveClass(
                                 "absolute bottom-2 right-[-18px] w-12 h-12", // mobile
                                 "absolute bottom-4 right-[-22px] w-14 h-14", // tablet
@@ -295,7 +295,7 @@ const VillageWebsite = () => {
                                 <Play className={responsiveClass("w-6 h-6", "w-7 h-7", "w-8 h-8") + " text-white"} />
                             </div>
                         </div>
-                    </div>
+                    </div> */}
                 </div>
             </section>
 
@@ -356,7 +356,7 @@ const VillageWebsite = () => {
                         >
                             <h2
                                 className={responsiveClass(
-                                    "text-emerald-900 text-4xl font-medium", // mobile
+                                    "text-emerald-900 text-5xl font-medium", // mobile
                                     "text-emerald-900 text-6xl font-medium", // tablet
                                     "text-emerald-900 text-9xl font-medium" // desktop
                                 )}
@@ -394,7 +394,7 @@ const VillageWebsite = () => {
                             </p>
                         </div>
 
-                        <button
+                        {/* <button
                             className={responsiveClass(
                                 "flex items-center gap-2 px-4 py-2 bg-emerald-900 rounded-xl text-white text-xs font-semibold font-['Montserrat']", // mobile
                                 "flex items-center gap-2 px-6 py-3 bg-emerald-900 rounded-2xl text-white text-lg font-semibold font-['Montserrat']", // tablet
@@ -421,7 +421,7 @@ const VillageWebsite = () => {
                                     )}
                                 />
                             </span>
-                        </button>
+                        </button> */}
                     </div>
 
                     {/* Image Gallery */}

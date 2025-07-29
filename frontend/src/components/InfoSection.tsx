@@ -75,7 +75,7 @@ const InfoSection = ({ className = "" }: InfoSectionProps) => {
           </span>
         </button>
 
-        <button type="button" className={responsiveClass(
+        {/* <button type="button" className={responsiveClass(
           "flex items-center gap-2 px-4 py-2 bg-emerald-900 rounded-2xl focus:outline-none", // mobile
           "flex items-center gap-3 px-5 py-3 bg-emerald-900 rounded-2xl focus:outline-none", // tablet
           "flex items-center gap-3 px-6 py-4 bg-emerald-900 rounded-3xl focus:outline-none" // desktop
@@ -98,7 +98,7 @@ const InfoSection = ({ className = "" }: InfoSectionProps) => {
               "w-5 h-5 text-emerald-900" // desktop
             )} />
           </span>
-        </button>
+        </button> */}
       </div>
     </section>
   );
