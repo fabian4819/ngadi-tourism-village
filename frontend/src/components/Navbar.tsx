@@ -62,9 +62,9 @@ const Navbar = () => {
                             src="/images/title.png"
                             alt="Tualang Tual"
                             className={responsiveClass(
-                                "h-[30px] w-auto", // mobile
-                                "h-[46.57px] w-auto", // tablet
-                                "h-[58.21px] w-auto" // desktop
+                                "w-[30vw]", // mobile
+                                "w-[30vw]", // tablet
+                                "w-[20vw]" // desktop
                             )}
                         />
                     </div>

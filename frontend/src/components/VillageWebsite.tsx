@@ -121,7 +121,7 @@ const VillageWebsite = () => {
                             loop
                             playsInline
                             className="w-full h-full object-cover"
-                        />
+                        />ta
                         {/* SVG efek pojok kanan bawah */}
                         <div className="absolute bottom-0 right-0" style={{ width: 250, height: 250, pointerEvents: "none" }}>
                             <svg width="250" height="250" viewBox="0 0 250 250" fill="none">
@@ -140,7 +140,7 @@ const VillageWebsite = () => {
                         <button
                             className="absolute bottom-4 right-4 z-20 group focus:outline-none"
                             style={{ transition: "transform 0.2s" }}
-                            onClick={() => setYoutubeUrl("https://www.youtube.com/embed/swtRHwOpWGs?autoplay=1")}
+                            onClick={() => setYoutubeUrl("https://www.youtube.com/embed/hAEFpdjNLtU?autoplay=1")}
                             aria-label="Tonton video profil Ohoi Ngadi"
                         >
                             <span className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-emerald-900 border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-200">
