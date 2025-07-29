@@ -92,8 +92,8 @@ const VillageWebsite = () => {
                         {/* Title */}
                         <h1
                             className={responsiveClass(
-                                "text-emerald-900 text-4xl font-semibold font-['Vivaldi'] text-center", // mobile
-                                "text-emerald-900 text-6xl font-semibold font-['Vivaldi'] text-center", // tablet
+                                "text-emerald-900 text-7xl font-semibold font-['Vivaldi'] text-center", // mobile
+                                "text-emerald-900 text-8xl font-semibold font-['Vivaldi'] text-center", // tablet
                                 "text-emerald-900 text-9xl font-semibold font-['Vivaldi'] text-center" // desktop
                             )}
                             style={{ zIndex: 2 }}
@@ -138,9 +138,9 @@ const VillageWebsite = () => {
                             loop
                             playsInline
                             className="w-full h-full object-cover"
-                        />ta
+                        />
                         {/* SVG efek pojok kanan bawah */}
-                        <div className="absolute bottom-0 right-0" style={{ width: 250, height: 250, pointerEvents: "none" }}>
+                        {/* <div className="absolute bottom-0 right-0" style={{ width: 250, height: 250, pointerEvents: "none" }}>
                             <svg width="250" height="250" viewBox="0 0 250 250" fill="none">
                                 <path
                                     d="
@@ -152,18 +152,34 @@ const VillageWebsite = () => {
                                     fill="white"
                                 />
                             </svg>
-                        </div>
+                        </div> */}
                         {/* Play Icon Button */}
                         <button
-                            className="absolute bottom-4 right-4 z-20 group focus:outline-none"
+                            className={responsiveClass(
+                                "absolute bottom-4 right-4 z-20 group focus:outline-none", // mobile
+                                "absolute bottom-6 right-6 z-20 group focus:outline-none", // tablet
+                                "absolute bottom-8 right-8 z-20 group focus:outline-none"  // desktop
+                            )}
                             style={{ transition: "transform 0.2s" }}
                             onClick={() => setYoutubeUrl("https://www.youtube.com/embed/hAEFpdjNLtU?autoplay=1")}
                             aria-label="Tonton video profil Ohoi Ngadi"
                         >
-                            <span className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-emerald-900 border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-200">
-                                <Play className="w-10 h-10 text-white group-hover:scale-110 transition-transform duration-200" />
+                            <span className={responsiveClass(
+                                "inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-900 border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-200", // mobile
+                                "inline-flex items-center justify-center w-20 h-20 rounded-full bg-emerald-900 border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-200", // tablet
+                                "inline-flex items-center justify-center w-24 h-24 rounded-full bg-emerald-900 border-4 border-white shadow-xl group-hover:scale-110 transition-transform duration-200" // desktop
+                            )}>
+                                <Play className={responsiveClass(
+                                    "w-5 h-5 text-white group-hover:scale-110 transition-transform duration-200", // mobile
+                                    "w-8 h-8 text-white group-hover:scale-110 transition-transform duration-200", // tablet
+                                    "w-10 h-10y text-white group-hover:scale-110 transition-transform duration-200" // desktop
+                                )} />
                             </span>
-                            <span className="absolute left-1/2 top-full mt-2 -translate-x-1/2 bg-white text-emerald-900 text-xs font-semibold px-3 py-1 rounded-full shadow opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+                            <span className={responsiveClass(
+                                "absolute left-1/2 top-full mt-2 -translate-x-1/2 bg-white text-emerald-900 text-xs font-semibold px-3 py-1 rounded-full shadow opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none", // mobile
+                                "absolute left-1/2 top-full mt-3 -translate-x-1/2 bg-white text-emerald-900 text-sm font-semibold px-4 py-2 rounded-full shadow opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none", // tablet
+                                "absolute left-1/2 top-full mt-4 -translate-x-1/2 bg-white text-emerald-900 text-base font-semibold px-5 py-2 rounded-full shadow opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none" // desktop
+                            )}>
                                 Tonton Video
                             </span>
                         </button>
@@ -228,7 +244,7 @@ const VillageWebsite = () => {
                         >
                             <h2
                                 className={responsiveClass(
-                                    "text-emerald-900 text-lg font-bold font-['Montserrat']", // mobile
+                                    "text-emerald-900 text-2xl font-bold font-['Montserrat']", // mobile
                                     "text-emerald-900 text-2xl font-bold font-['Montserrat']", // tablet
                                     "text-emerald-900 text-4xl font-bold font-['Montserrat']" // desktop
                                 )}
