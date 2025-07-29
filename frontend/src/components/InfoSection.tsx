@@ -46,11 +46,15 @@ const InfoSection = ({ className = "" }: InfoSectionProps) => {
         "flex flex-wrap gap-4", // tablet
         "flex flex-row gap-6" // desktop
       )}>
-        <button type="button" className={responsiveClass(
-          "flex items-center gap-2 px-4 py-2 bg-emerald-900 rounded-2xl focus:outline-none", // mobile
-          "flex items-center gap-3 px-5 py-3 bg-emerald-900 rounded-2xl focus:outline-none", // tablet
-          "flex items-center gap-3 px-6 py-4 bg-emerald-900 rounded-3xl focus:outline-none" // desktop
-        )}>
+        <button
+          type="button"
+          className={responsiveClass(
+            "flex items-center gap-2 px-4 py-2 bg-emerald-900 rounded-2xl focus:outline-none", // mobile
+            "flex items-center gap-3 px-5 py-3 bg-emerald-900 rounded-2xl focus:outline-none", // tablet
+            "flex items-center gap-3 px-6 py-4 bg-emerald-900 rounded-3xl focus:outline-none" // desktop
+          )}
+          onClick={() => window.open("/documents/sni-desa.pdf", "_blank")}
+        >
           <span className={responsiveClass(
             "text-white text-sm font-semibold font-['Montserrat']", // mobile
             "text-white text-lg font-semibold font-['Montserrat']", // tablet

@@ -579,80 +579,88 @@ const VillageWebsite = () => {
                 </div>
 
                 {/* Map & Location List */}
-                <div
-                    className={responsiveClass(
-                        "w-full flex flex-col mt-10 gap-4", // mobile: stack
-                        "w-full flex flex-row mt-10 gap-8", // tablet: side by side
-                        "w-full flex flex-row mt-10 gap-12" // desktop: side by side
-                    )}
-                >
-                    {/* Map Image */}
-                    <img
+                <div className="relative w-full">
+                    {/* Addition Asset (z-0, paling belakang) */}
+                    <div
                         className={responsiveClass(
-                            "w-full h-[260px] object-cover", // mobile
-                            "w-[737px] h-[400px] object-cover", // tablet
-                            "w-[60vw] object-cover" // desktop
+                            "hidden", // mobile
+                            "block",  // tablet
+                            "block"   // desktop
                         )}
-                        src="/images/map-full.png"
-                        alt="Peta Ohoi Ngadi"
-                        draggable={false}
-                    />
-                    {/* Location List */}
-                    <div className={responsiveClass(
-                        "w-full flex flex-col gap-2 mt-4", // mobile
-                        "w-[30vw] flex flex-col gap-2 mt-0", // tablet
-                        "w-[30vw] flex flex-col gap-4 mt-0" // desktop
-                    )}>
-                        <div className="text-emerald-900 text-4xl font-bold font-['Montserrat'] mb-2">
-                            Akses Lokasi
-                        </div>
-                        {[
-                            { label: "Danau Waren", url: "https://maps.app.goo.gl/xxxx1" },
-                            { label: "Kolam Renang Dito Hills", url: "https://maps.app.goo.gl/xxxx2" },
-                            { label: "Homestay", url: "https://maps.app.goo.gl/xxxx3" },
-                            { label: "Lapangan Desa", url: "https://maps.app.goo.gl/xxxx4" },
-                            { label: "Masjid Al Mu’minun", url: "https://maps.app.goo.gl/xxxx5" },
-                            { label: "Gereja St. Paulus", url: "https://maps.app.goo.gl/xxxx6" },
-                        ].map((item) => (
-                            <a
-                                key={item.label}
-                                href={item.url}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="self-stretch px-3.5 py-[5px] bg-emerald-900 rounded-[10px] flex justify-between items-center hover:bg-emerald-800 transition"
-                                style={{ boxShadow: "0 2px 8px 0 rgba(20,83,45,0.08)" }}
-                            >
-                                <div className="text-white text-2xl md:text-3xl font-medium font-['Albert_Sans']">
-                                    {item.label}
-                                </div>
-                                <div className="w-10 h-10 relative overflow-hidden flex items-center justify-center">
-                                    <div className="w-9 h-9 absolute left-[1.65px] top-[1.65px] bg-white rounded-full flex items-center justify-center">
-                                        {/* Iconify Direction Icon */}
-                                        <Icon icon="ic:round-assistant-direction" className="w-6 h-6 text-emerald-900" />
-                                    </div>
-                                </div>
-                            </a>
-                        ))}
+                        style={{
+                            zIndex: 0,
+                            position: "absolute",
+                            right: 0,
+                            bottom: 0,
+                            pointerEvents: "none"
+                        }}
+                    >
+                        <img
+                            src="/images/addition-asset.png"
+                            alt="Additional Asset"
+                            className={responsiveClass(
+                                "w-20 h-auto", // mobile
+                                "w-24 h-auto", // tablet
+                                "w-56 h-auto"  // desktop
+                            )}
+                        />
                     </div>
-                </div>
-                {/* Addition Asset */}
-                <div
-                    className={responsiveClass(
-                        "hidden", // mobile
-                        "block absolute right-0 bottom-0", // tablet
-                        "block absolute right-0 bottom-0" // desktop
-                    )}
-                    style={{ zIndex: 0, pointerEvents: "none" }}
-                >
-                    <img
-                        src="/images/addition-asset.png"
-                        alt="Additional Asset"
+                    {/* Konten utama (map & lokasi) di depan asset */}
+                    <div
                         className={responsiveClass(
-                            "w-20 h-auto", // mobile
-                            "w-24 h-auto", // tablet
-                            "w-56 h-auto" // desktop
+                            "w-full flex flex-col mt-10 gap-4 relative z-10", // mobile
+                            "w-full flex flex-row mt-10 gap-8 relative z-10", // tablet
+                            "w-full flex flex-row mt-10 gap-12 relative z-10" // desktop
                         )}
-                    />
+                    >
+                        {/* Map Image */}
+                        <img
+                            className={responsiveClass(
+                                "w-full h-[260px] object-cover", // mobile
+                                "w-[737px] h-[400px] object-cover", // tablet
+                                "w-[60vw] object-cover" // desktop
+                            )}
+                            src="/images/map-full.png"
+                            alt="Peta Ohoi Ngadi"
+                            draggable={false}
+                        />
+                        {/* Location List */}
+                        <div className={responsiveClass(
+                            "w-full flex flex-col gap-2 mt-4", // mobile
+                            "w-[30vw] flex flex-col gap-2 mt-0", // tablet
+                            "w-[30vw] flex flex-col gap-4 mt-0" // desktop
+                        )}>
+                            <div className="text-emerald-900 text-4xl font-bold font-['Montserrat'] mb-2">
+                                Akses Lokasi
+                            </div>
+                            {[
+                                { label: "Danau Waren", url: "https://maps.app.goo.gl/xxxx1" },
+                                { label: "Kolam Renang Dito Hills", url: "https://maps.app.goo.gl/xxxx2" },
+                                { label: "Homestay", url: "https://maps.app.goo.gl/xxxx3" },
+                                { label: "Lapangan Desa", url: "https://maps.app.goo.gl/xxxx4" },
+                                { label: "Masjid Al Mu’minun", url: "https://maps.app.goo.gl/xxxx5" },
+                                { label: "Gereja St. Paulus", url: "https://maps.app.goo.gl/xxxx6" },
+                            ].map((item) => (
+                                <a
+                                    key={item.label}
+                                    href={item.url}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="self-stretch px-3.5 py-[5px] bg-emerald-900 rounded-[10px] flex justify-between items-center hover:bg-emerald-800 transition"
+                                    style={{ boxShadow: "0 2px 8px 0 rgba(20,83,45,0.08)" }}
+                                >
+                                    <div className="text-white text-2xl md:text-3xl font-medium font-['Albert_Sans']">
+                                        {item.label}
+                                    </div>
+                                    <div className="w-10 h-10 relative overflow-hidden flex items-center justify-center">
+                                        <div className="w-9 h-9 absolute left-[1.65px] top-[1.65px] bg-white rounded-full flex items-center justify-center">
+                                            <Icon icon="ic:round-assistant-direction" className="w-6 h-6 text-emerald-900" />
+                                        </div>
+                                    </div>
+                                </a>
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </section>
 
