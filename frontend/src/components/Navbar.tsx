@@ -153,7 +153,19 @@ const Navbar = () => {
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         aria-label="Open menu"
                     >
-                        <div className="w-3 h-2 bg-white"></div>
+                        {/* Hamburger Icon */}
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="w-6 h-6 text-white"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth={2}
+                        >
+                            <line x1="4" y1="7" x2="20" y2="7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                            <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                            <line x1="4" y1="17" x2="20" y2="17" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+                        </svg>
                     </button>
                 </nav>
             </header>
