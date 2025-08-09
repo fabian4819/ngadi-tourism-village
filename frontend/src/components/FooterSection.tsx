@@ -1,5 +1,5 @@
 import { twMerge } from "tailwind-merge";
-import { Phone, Mail, Instagram, Facebook, Youtube } from "lucide-react";
+import { Phone, Mail, Instagram, Youtube } from "lucide-react";
 import { SiTiktok } from "react-icons/si";
 import { useBreakpoint, getResponsiveValue } from "../hooks/useBreakpoint";
 
@@ -82,22 +82,22 @@ const FooterSection = () => {
                                 Pemerintah Ohoi Ngadi
                             </h4>
                             <div className="space-y-3">
-                                <div className="flex items-center gap-4">
+                                {/* <div className="flex items-center gap-4">
                                     <Facebook className="w-6 h-6 text-white" />
                                     <span className="text-white text-lg font-semibold">
                                         Pemerintah Ohoi Ngadi
                                     </span>
-                                </div>
+                                </div> */}
                                 <div className="flex items-center gap-4">
                                     <Phone className="w-6 h-6 text-white" />
                                     <span className="text-white text-lg font-semibold">
-                                        (021) 1234-567
+                                        0823-9752-1625
                                     </span>
                                 </div>
                                 <div className="flex items-center gap-4">
                                     <Mail className="w-6 h-6 text-white" />
                                     <span className="text-white text-lg font-semibold">
-                                        ngadi@tualkota.go.id
+                                       pemdes.ngadi01@gmail.com
                                     </span>
                                 </div>
                             </div>
