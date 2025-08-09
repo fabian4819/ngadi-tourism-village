@@ -239,6 +239,36 @@ const VillageWebsite = () => {
                             masyarakatnya
                         </p>
                     </div>
+                    <div
+                        className={responsiveClass(
+                            "w-full relative ml-0", // mobile
+                            "w-64 relative ml-8", // tablet
+                            "w-80 relative ml-16" // desktop
+                        )}
+                    >
+                        <img
+                            src="/images/image-template.png"
+                            alt="Cultural activity"
+                            className={responsiveClass(
+                                "w-full h-32 rounded-3xl", // mobile
+                                "w-full h-36 rounded-3xl", // tablet
+                                "w-full h-44 rounded-3xl" // desktop
+                            )}
+                        />
+                        <div
+                            className={responsiveClass(
+                                "absolute bottom-2 right-[-18px] w-12 h-12", // mobile
+                                "absolute bottom-4 right-[-22px] w-14 h-14", // tablet
+                                "absolute bottom-6 right-[-28px] w-16 h-16" // desktop
+                            )}
+                            style={{ zIndex: 2, cursor: "pointer" }}
+                            onClick={() => setYoutubeUrl("https://drive.google.com/file/d/1E9zzvp2vulcu-A6YIoNp69zgQkohangE/preview")}
+                        >
+                            <div className="w-full h-full bg-emerald-900 rounded-full border-4 border-white flex items-center justify-center shadow-lg">
+                                <Play className={responsiveClass("w-6 h-6", "w-7 h-7", "w-8 h-8") + " text-white"} />
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
