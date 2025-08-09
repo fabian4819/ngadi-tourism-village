@@ -118,24 +118,29 @@ const Navbar = () => {
                                     <div className="bg-white border-x border-b border-emerald-900 rounded-b-3xl overflow-hidden shadow-lg">
                                         <div className="flex flex-col">
                                             {/* Item: Ohoi Dullah */}
-                                            {/* You might want these to be links to sub-pages later, e.g., <Link to="/kenali-desa/dullah"> */}
-                                            <button
-                                                type="button"
+                                            <a
+                                                href="https://ohoi-dullah.id"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
                                                 className="px-5 py-2 border-b border-emerald-900 text-left hover:bg-emerald-50 focus:bg-emerald-100 transition"
+                                                style={{ textDecoration: "none" }}
                                             >
                                                 <span className="text-emerald-900 text-sm font-medium">
                                                     Ohoi Dullah
                                                 </span>
-                                            </button>
+                                            </a>
                                             {/* Item: Ohoi Labetawi */}
-                                            <button
-                                                type="button"
+                                            <a
+                                                href="https://ohoi-labetawi.id"
+                                                target="_blank"
+                                                rel="noopener noreferrer"
                                                 className="px-5 py-2 text-left hover:bg-emerald-50 focus:bg-emerald-100 transition"
+                                                style={{ textDecoration: "none" }}
                                             >
                                                 <span className="text-emerald-900 text-sm font-medium">
                                                     Ohoi Labetawi
                                                 </span>
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>
                                 </div>
