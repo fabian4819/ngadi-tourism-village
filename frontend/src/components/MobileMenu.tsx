@@ -56,7 +56,7 @@ const MobileMenu = ({ isOpen, onClose }: MobileMenuProps) => {
             className="flex items-center gap-2 w-full text-left"
             onClick={() => setIsDropdownOpen((v) => !v)}
           >
-            <span className="text-white text-lg font-medium font-['Montserrat']">Kenali Desa</span>
+            <span className="text-white text-lg font-medium font-['Montserrat']">Kenali Ohoi</span>
             <ChevronDown className={`w-6 h-6 text-white transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
           </button>
           {isDropdownOpen && (

@@ -58,7 +58,7 @@ const FooterSection = () => {
                         </div>
                         <div>
                             <h3 className="text-white text-xl font-semibold font-['Montserrat'] mb-2">
-                                Desa Ngadi
+                                Ohoi Ngadi
                             </h3>
                             <p className="text-white text-base font-normal font-['Albert_Sans'] mb-1">
                                 Pulau Dullah Utara, Kota Tual, Maluku, Indonesia
@@ -79,7 +79,7 @@ const FooterSection = () => {
                     >
                         <div>
                             <h4 className="text-white text-base font-bold font-['Montserrat'] mb-4">
-                                Pemerintah Desa Ngadi
+                                Pemerintah Ohoi Ngadi
                             </h4>
                             <div className="space-y-3">
                                 <div className="flex items-center gap-4">
