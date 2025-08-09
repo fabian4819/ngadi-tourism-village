@@ -104,7 +104,7 @@ const Navbar = () => {
                                     borderBottomRightRadius: isOpen ? 0 : '1.5rem',
                                 }}
                             >
-                                <span>Kenali Desa</span>
+                                <span>Kenali Ohoi</span>
                                 {isOpen ? (
                                     <ChevronUp className="w-6 h-6 text-white transition-transform duration-200" />
                                 ) : (

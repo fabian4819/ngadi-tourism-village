@@ -36,7 +36,7 @@ const InfoSection = ({ className = "" }: InfoSectionProps) => {
           "text-black text-lg font-normal font-['Albert_Sans'] leading-relaxed", // tablet
           "text-black text-3xl font-normal font-['Albert_Sans'] leading-relaxed" // desktop
         )}>
-          Dapatkan informasi lengkap seputar desa kami
+          Dapatkan informasi lengkap seputar ohoi kami
         </p>
       </div>
 

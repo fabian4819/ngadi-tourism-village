@@ -28,7 +28,7 @@ const OrganizationChart = ({ className = "" }: OrganizationChartProps) => {
           "text-emerald-900 text-2xl font-bold font-['Montserrat'] mb-3", // tablet
           "text-emerald-900 text-4xl font-bold font-['Montserrat'] mb-4" // desktop
         )}>
-          Penggerak Desa <span className="text-emerald-900 italic">Katong</span>
+          Penggerak Ohoi <span className="text-emerald-900 italic">Katong</span>
         </h2>
         <p className={responsiveClass(
           "text-black text-sm font-normal font-['Albert_Sans'] leading-tight", // mobile
