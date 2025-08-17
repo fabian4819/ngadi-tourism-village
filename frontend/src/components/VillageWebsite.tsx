@@ -29,22 +29,22 @@ const VillageWebsite = () => {
     ): string => {
         const values = {
             mobile,
-            tablet,
-            desktop,
+            tablet: tablet || mobile,
+            desktop: desktop || tablet || mobile,
         };
         return twMerge(getResponsiveValue(values, currentBreakpoint) || mobile);
     };
 
     return (
-        <div className="min-h-screen bg-white overflow-hidden">
+        <div className="min-h-screen bg-gradient-to-br from-white via-emerald-50/30 to-amber-50/20 overflow-hidden">
             <Navbar />
 
             {/* Hero Section */}
             <section
                 className={responsiveClass(
-                    "flex flex-col items-center gap-6 px-3",
-                    "flex flex-col items-center gap-8 px-5",
-                    "flex flex-col items-center gap-10"
+                    "flex flex-col items-center gap-6 px-4 py-4",
+                    "flex flex-col items-center gap-8 px-8 py-6",
+                    "flex flex-col items-center gap-10 px-12 py-8"
                 )}
             >
                 {/* Decorative Elements */}
@@ -87,9 +87,9 @@ const VillageWebsite = () => {
                         {/* Title */}
                         <h1
                             className={responsiveClass(
-                                "text-emerald-900 text-7xl font-semibold font-['Vivaldi'] text-center z-20",
-                                "text-emerald-900 text-8xl font-semibold font-['Vivaldi'] text-center z-20",
-                                "text-emerald-900 text-9xl font-semibold font-['Vivaldi'] text-center z-20"
+                                "text-emerald-900 text-5xl sm:text-6xl font-semibold font-['Vivaldi'] text-center z-20 transition-all duration-300 animate-fade-in-up",
+                                "text-emerald-900 text-7xl md:text-8xl font-semibold font-['Vivaldi'] text-center z-20 transition-all duration-300 animate-fade-in-up",
+                                "gradient-text text-8xl xl:text-9xl font-semibold font-['Vivaldi'] text-center z-20 transition-all duration-300 animate-fade-in-up hover:animate-pulse"
                             )}
                         >
                             Ohoi Ngadi
@@ -119,18 +119,19 @@ const VillageWebsite = () => {
                 {/* Hero Video */}
                 <div
                     className={responsiveClass(
-                        "w-full px-2 md:px-8 lg:px-20 box-border",
-                        "w-full px-8 box-border",
-                        "w-full px-10 box-border"
+                        "w-full px-4 box-border",
+                        "w-full px-8 md:px-12 box-border",
+                        "w-full px-16 xl:px-20 box-border"
                     )}
                 >
-                    <div className="relative w-full aspect-video rounded-3xl overflow-hidden bg-white">
+                    <div className="relative w-full aspect-video rounded-2xl md:rounded-3xl overflow-hidden bg-white shadow-xl hover:shadow-2xl transition-all duration-500 hover-lift group">
                         <video
                             src="/videos/ngadi-profile.mp4"
                             autoPlay
                             loop
+                            muted
                             playsInline
-                            className="w-full h-full object-cover"
+                            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                         />
                         {/* Play Icon Button */}
                         <button
@@ -140,15 +141,15 @@ const VillageWebsite = () => {
                                     "absolute bottom-6 right-6 z-20 group focus:outline-none",
                                     "absolute bottom-8 right-8 z-20 group focus:outline-none"
                                 ),
-                                "transition-transform duration-200"
+                                "transition-all duration-300 hover-lift animate-bounce-in"
                             )}
                             onClick={() => setYoutubeUrl("https://www.youtube.com/embed/hAEFpdjNLtU?autoplay=1")}
                             aria-label="Tonton video profil Ohoi Ngadi"
                         >
                             <span className={responsiveClass(
-                                "inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-900 border-4 border-white shadow-xl hover:scale-110 transition-transform duration-200",
-                                "inline-flex items-center justify-center w-20 h-20 rounded-full bg-emerald-900 border-4 border-white shadow-xl hover:scale-110 transition-transform duration-200",
-                                "inline-flex items-center justify-center w-24 h-24 rounded-full bg-emerald-900 border-4 border-white shadow-xl hover:scale-110 transition-transform duration-200"
+                                "inline-flex items-center justify-center w-16 h-16 rounded-full bg-emerald-900 border-4 border-white shadow-xl hover:scale-110 transition-all duration-300 btn-modern",
+                                "inline-flex items-center justify-center w-20 h-20 rounded-full bg-emerald-900 border-4 border-white shadow-xl hover:scale-110 transition-all duration-300 btn-modern",
+                                "inline-flex items-center justify-center w-24 h-24 rounded-full bg-emerald-900 border-4 border-white shadow-xl hover:scale-110 transition-all duration-300 btn-modern hover:bg-emerald-700"
                             )}>
                                 <Play className={responsiveClass(
                                     "w-5 h-5 text-white",
@@ -197,16 +198,16 @@ const VillageWebsite = () => {
             {/* Culture Section */}
             <section
                 className={responsiveClass(
-                    "px-3 py-8",
-                    "px-5 py-12",
+                    "px-4 py-8",
+                    "px-8 py-12",
                     "px-12 py-16"
                 )}
             >
                 <div
                     className={responsiveClass(
                         "flex flex-col gap-6",
-                        "flex flex-col gap-8 lg:flex-row lg:items-center",
-                        "flex flex-row items-center gap-60"
+                        "flex flex-col md:flex-row md:items-center gap-8 md:gap-12",
+                        "flex flex-row items-center gap-16 xl:gap-32"
                     )}
                 >
                     <div className="flex-1">
@@ -219,9 +220,9 @@ const VillageWebsite = () => {
                         >
                             <h2
                                 className={responsiveClass(
-                                    "text-emerald-900 text-2xl font-bold font-['Montserrat']",
-                                    "text-emerald-900 text-2xl font-bold font-['Montserrat']",
-                                    "text-emerald-900 text-4xl font-bold font-['Montserrat']"
+                                    "text-emerald-900 text-2xl font-bold font-['Montserrat'] hover:text-emerald-700 transition-colors duration-300",
+                                    "text-emerald-900 text-3xl font-bold font-['Montserrat'] hover:text-emerald-700 transition-colors duration-300",
+                                    "text-emerald-900 text-4xl xl:text-5xl font-bold font-['Montserrat'] hover:text-emerald-700 transition-colors duration-300"
                                 )}
                             >
                                 Mengenal Budaya <span className="italic">Katong</span>
@@ -229,9 +230,9 @@ const VillageWebsite = () => {
                         </div>
                         <p
                             className={responsiveClass(
-                                "text-black text-lg font-medium font-['Albert_Sans'] leading-tight",
-                                "text-black text-lg font-medium font-['Albert_Sans'] leading-relaxed",
-                                "text-black text-2xl font-medium font-['Albert_Sans'] leading-relaxed"
+                                "text-black text-base font-medium font-['Albert_Sans'] leading-relaxed",
+                                "text-black text-lg md:text-xl font-medium font-['Albert_Sans'] leading-relaxed",
+                                "text-black text-xl xl:text-2xl font-medium font-['Albert_Sans'] leading-relaxed"
                             )}
                         >
                             Tual bukan hanya soal keindahan lautnya, tapi juga tentang cerita,
@@ -241,18 +242,18 @@ const VillageWebsite = () => {
                     </div>
                     <div
                         className={responsiveClass(
-                            "w-full relative ml-0", // mobile
-                            "w-64 relative ml-8", // tablet
-                            "w-80 relative ml-16" // desktop
+                            "w-full relative flex-shrink-0",
+                            "w-72 md:w-80 relative flex-shrink-0",
+                            "w-96 relative flex-shrink-0"
                         )}
                     >
                         <img
                             src="/images/image-template.png"
                             alt="Cultural activity"
                             className={responsiveClass(
-                                "w-full h-32 rounded-3xl", // mobile
-                                "w-full h-36 rounded-3xl", // tablet
-                                "w-full h-44 rounded-3xl" // desktop
+                                "w-full h-40 rounded-2xl object-cover hover:scale-105 transition-transform duration-300 shadow-lg",
+                                "w-full h-48 rounded-3xl object-cover hover:scale-105 transition-transform duration-300 shadow-lg",
+                                "w-full h-56 rounded-3xl object-cover hover:scale-105 transition-transform duration-300 shadow-xl"
                             )}
                         />
                         <div
@@ -275,16 +276,16 @@ const VillageWebsite = () => {
             {/* Welcome Section */}
             <section
                 className={responsiveClass(
-                    "px-3 py-8",
-                    "px-5 py-12",
+                    "px-4 py-8",
+                    "px-8 py-12",
                     "px-12 py-16"
                 )}
             >
                 <div
                     className={responsiveClass(
-                        "flex flex-col gap-6",
-                        "flex flex-col gap-8 lg:flex-row lg:justify-between",
-                        "flex flex-row justify-between items-start gap-32"
+                        "flex flex-col gap-8",
+                        "flex flex-col lg:flex-row lg:justify-between gap-12",
+                        "flex flex-row justify-between items-start gap-16 xl:gap-24"
                     )}
                 >
                     <div
@@ -303,9 +304,9 @@ const VillageWebsite = () => {
                         >
                             <h2
                                 className={responsiveClass(
-                                    "text-emerald-900 text-5xl font-medium",
-                                    "text-emerald-900 text-6xl font-medium",
-                                    "text-emerald-900 text-9xl font-medium"
+                                    "text-emerald-900 text-4xl sm:text-5xl font-medium transition-all duration-300 hover:scale-105 animate-fade-in-up",
+                                    "text-emerald-900 text-6xl md:text-7xl font-medium transition-all duration-300 hover:scale-105 animate-fade-in-up",
+                                    "gradient-text text-8xl xl:text-9xl font-medium transition-all duration-500 hover:scale-105 animate-fade-in-up animate-float cursor-pointer"
                                 )}
                             >
                                 <span className="font-['Cormorant'] italic">T</span>
@@ -322,9 +323,9 @@ const VillageWebsite = () => {
                         >
                             <p
                                 className={responsiveClass(
-                                    "text-black text-sm font-medium font-['Albert_Sans'] leading-tight",
-                                    "text-black text-lg font-medium font-['Albert_Sans'] leading-relaxed",
-                                    "text-black text-2xl font-medium font-['Albert_Sans'] leading-relaxed"
+                                    "text-black text-base font-medium font-['Albert_Sans'] leading-relaxed",
+                                    "text-black text-lg md:text-xl font-medium font-['Albert_Sans'] leading-relaxed",
+                                    "text-black text-xl xl:text-2xl font-medium font-['Albert_Sans'] leading-relaxed"
                                 )}
                             >
                                 Selamat datang di Ohoi Ngadi, desa wisata bahari di Tual, Maluku
@@ -344,11 +345,11 @@ const VillageWebsite = () => {
                         <button
                             className={twMerge(
                                 responsiveClass(
-                                    "flex items-center gap-2 px-4 py-2 bg-emerald-900 rounded-xl text-white text-xs font-semibold font-['Montserrat']",
-                                    "flex items-center gap-2 px-6 py-3 bg-emerald-900 rounded-2xl text-white text-lg font-semibold font-['Montserrat']",
-                                    "flex items-center gap-3 px-6 py-2 bg-emerald-900 rounded-3xl text-white text-xl font-semibold font-['Montserrat']"
+                                    "flex items-center gap-3 px-5 py-3 bg-emerald-900 rounded-xl text-white text-sm font-semibold font-['Montserrat']",
+                                    "flex items-center gap-3 px-6 py-4 bg-emerald-900 rounded-2xl text-white text-base md:text-lg font-semibold font-['Montserrat']",
+                                    "flex items-center gap-4 px-8 py-5 bg-emerald-900 rounded-3xl text-white text-xl font-semibold font-['Montserrat']"
                                 ),
-                                "transition-colors duration-300 hover:bg-emerald-700 hover:shadow-lg"
+                                "btn-modern hover-lift transition-all duration-300 hover:bg-emerald-700 hover:shadow-2xl hover:scale-105 active:scale-95"
                             )}
                             onClick={() => setYoutubeUrl("https://drive.google.com/file/d/1uBksGXUROP-7rftikPkfZcLAiz1PsVuq/preview")}
                         >
@@ -378,9 +379,9 @@ const VillageWebsite = () => {
                     {/* Image Gallery */}
                     <div
                         className={responsiveClass(
-                            "flex items-center justify-center gap-2",
-                            "flex items-center justify-center gap-3",
-                            "flex items-center justify-center gap-4 mt-20"
+                            "flex items-center justify-center gap-3 mt-8",
+                            "flex items-center justify-center gap-4 mt-8 md:mt-12",
+                            "flex items-center justify-center gap-6 mt-16 xl:mt-20"
                         )}
                     >
                         {/* Center image (tabema-1) */}
@@ -388,30 +389,30 @@ const VillageWebsite = () => {
                             src="/images/tabema-1.png"
                             alt="Village life 1"
                             className={responsiveClass(
-                                "w-24 h-32 rounded-lg object-cover hover:scale-105 transition-transform duration-300",
-                                "w-32 rounded-xl object-cover hover:scale-110 transition-transform duration-300",
-                                "w-60 rounded-2xl object-cover hover:scale-115 transition-transform duration-300"
+                                "w-28 h-36 rounded-xl object-cover hover:scale-110 hover:shadow-lg transition-all duration-500 hover:z-10 cursor-pointer",
+                                "w-36 h-48 rounded-xl object-cover hover:scale-110 hover:shadow-xl transition-all duration-500 hover:z-10 cursor-pointer",
+                                "w-64 h-80 rounded-2xl object-cover hover:scale-110 hover:shadow-2xl transition-all duration-500 hover:z-10 cursor-pointer"
                             )}
                             style={{ zIndex: 2 }}
                         />
                         {/* Right column: tabema-2 (top), tabema-3 (bottom) */}
-                        <div className="flex flex-col justify-center" style={{ zIndex: 1 }}>
+                        <div className="flex flex-col justify-center gap-2" style={{ zIndex: 1 }}>
                             <img
                                 src="/images/tabema-2.png"
                                 alt="Village life 2"
                                 className={responsiveClass(
-                                    "w-24 h-20 rounded-lg object-cover translate-y-[-20%] hover:scale-105 transition-transform duration-300",
-                                    "w-32 h-24 rounded-xl object-cover translate-y-[-24%] hover:scale-110 transition-transform duration-300",
-                                    "w-60 rounded-2xl object-cover translate-y-[-10%] hover:scale-115 transition-transform duration-300"
+                                    "w-28 h-24 rounded-xl object-cover -translate-y-4 hover:scale-110 hover:shadow-lg transition-all duration-500 hover:z-10 cursor-pointer",
+                                    "w-36 h-32 rounded-xl object-cover -translate-y-6 hover:scale-110 hover:shadow-xl transition-all duration-500 hover:z-10 cursor-pointer",
+                                    "w-64 h-48 rounded-2xl object-cover -translate-y-8 hover:scale-110 hover:shadow-2xl transition-all duration-500 hover:z-10 cursor-pointer"
                                 )}
                             />
                             <img
                                 src="/images/tabema-3.png"
                                 alt="Village life 3"
                                 className={responsiveClass(
-                                    "w-24 h-20 rounded-lg object-cover translate-y-[20%] hover:scale-105 transition-transform duration-300",
-                                    "w-32 h-24 rounded-xl object-cover translate-y-[24%] hover:scale-110 transition-transform duration-300",
-                                    "w-60 rounded-2xl object-cover translate-y-[10%] hover:scale-115 transition-transform duration-300"
+                                    "w-28 h-24 rounded-xl object-cover translate-y-4 hover:scale-110 hover:shadow-lg transition-all duration-500 hover:z-10 cursor-pointer",
+                                    "w-36 h-32 rounded-xl object-cover translate-y-6 hover:scale-110 hover:shadow-xl transition-all duration-500 hover:z-10 cursor-pointer",
+                                    "w-64 h-48 rounded-2xl object-cover translate-y-8 hover:scale-110 hover:shadow-2xl transition-all duration-500 hover:z-10 cursor-pointer"
                                 )}
                             />
                         </div>
@@ -422,17 +423,18 @@ const VillageWebsite = () => {
             {/* Food Gallery */}
             <section
                 className={responsiveClass(
-                    "px-3 py-8",
-                    "px-5 py-12",
-                    "px-6 py-16"
+                    "px-4 py-8",
+                    "px-8 py-12",
+                    "px-12 py-16"
                 )}
             >
                 <div
                     className={responsiveClass(
-                        "flex gap-2 overflow-x-auto",
-                        "flex gap-3 overflow-x-auto",
-                        "flex gap-6 overflow-x-auto"
+                        "flex gap-4 overflow-x-auto pb-4 scrollbar-hide",
+                        "flex gap-6 overflow-x-auto pb-4 scrollbar-hide",
+                        "flex gap-8 overflow-x-auto pb-4 scrollbar-hide justify-center"
                     )}
+                    style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                 >
                     {[
                         {
@@ -465,9 +467,9 @@ const VillageWebsite = () => {
                             key={food.title}
                             className={
                                 responsiveClass(
-                                    "relative w-24 h-28 rounded-xl flex-shrink-0 group transition-all duration-300 hover:scale-105",
-                                    "relative w-32 h-36 rounded-2xl flex-shrink-0 group transition-all duration-300 hover:scale-110",
-                                    "relative w-64 h-72 rounded-3xl group transition-all duration-300 hover:scale-115"
+                                    "relative w-36 h-48 rounded-2xl flex-shrink-0 group transition-all duration-500 hover:scale-110 hover:shadow-xl cursor-pointer",
+                                    "relative w-48 h-64 rounded-2xl flex-shrink-0 group transition-all duration-500 hover:scale-110 hover:shadow-2xl cursor-pointer",
+                                    "relative w-72 h-96 rounded-3xl flex-shrink-0 group transition-all duration-500 hover:scale-110 hover:shadow-2xl cursor-pointer"
                                 )
                             }
                         >
@@ -476,38 +478,37 @@ const VillageWebsite = () => {
                                 alt={food.title}
                                 className={
                                     responsiveClass(
-                                        "w-full h-full object-cover rounded-xl transition-all duration-300",
-                                        "w-full h-full object-cover rounded-2xl transition-all duration-300",
-                                        "w-full h-full object-cover rounded-3xl transition-all duration-300"
+                                        "w-full h-full object-cover rounded-2xl transition-all duration-500 group-hover:brightness-75",
+                                        "w-full h-full object-cover rounded-2xl transition-all duration-500 group-hover:brightness-75",
+                                        "w-full h-full object-cover rounded-3xl transition-all duration-500 group-hover:brightness-75"
                                     )
                                 }
                             />
                             {/* Overlay on hover */}
                             <div
-                                // Gabungkan semua kelas ke dalam satu className
                                 className={twMerge(
                                     responsiveClass(
-                                        "absolute inset-0 bg-gradient-to-b from-black/0 via-black/60 to-emerald-900 rounded-xl flex flex-col justify-end items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300",
-                                        "absolute inset-0 bg-gradient-to-b from-black/0 via-black/60 to-emerald-900 rounded-2xl flex flex-col justify-end items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300",
-                                        "absolute inset-0 bg-gradient-to-b from-black/0 via-black/60 to-emerald-900 rounded-3xl flex flex-col justify-end items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                                        "absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-emerald-900/90 rounded-2xl flex flex-col justify-end items-start opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:translate-y-0 translate-y-4",
+                                        "absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-emerald-900/90 rounded-2xl flex flex-col justify-end items-start opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:translate-y-0 translate-y-4",
+                                        "absolute inset-0 bg-gradient-to-b from-transparent via-black/40 to-emerald-900/90 rounded-3xl flex flex-col justify-end items-start opacity-0 group-hover:opacity-100 transition-all duration-500 transform group-hover:translate-y-0 translate-y-4"
                                     ),
-                                    "p-4"
+                                    "p-4 md:p-6"
                                 )}
                             >
                                 <h3
                                     className={responsiveClass(
-                                        "text-white text-lg font-bold font-['Montserrat'] mb-1 text-left w-full",
-                                        "text-white text-xl font-bold font-['Montserrat'] mb-2 text-left w-full",
-                                        "text-white text-2xl font-bold font-['Montserrat'] mb-2 text-left w-full"
+                                        "text-white text-lg font-bold font-['Montserrat'] mb-2 text-left w-full transform group-hover:translate-y-0 translate-y-2 transition-transform duration-500 delay-100",
+                                        "text-white text-xl font-bold font-['Montserrat'] mb-2 text-left w-full transform group-hover:translate-y-0 translate-y-2 transition-transform duration-500 delay-100",
+                                        "text-white text-2xl xl:text-3xl font-bold font-['Montserrat'] mb-3 text-left w-full transform group-hover:translate-y-0 translate-y-2 transition-transform duration-500 delay-100"
                                     )}
                                 >
                                     {food.title}
                                 </h3>
                                 <p
                                     className={responsiveClass(
-                                        "text-white text-xs font-normal font-['Albert_Sans'] leading-tight text-left w-full",
-                                        "text-white text-sm font-normal font-['Albert_Sans'] leading-relaxed text-left w-full",
-                                        "text-white text-base font-normal font-['Albert_Sans'] leading-relaxed text-left w-full"
+                                        "text-white text-sm font-normal font-['Albert_Sans'] leading-relaxed text-left w-full transform group-hover:translate-y-0 translate-y-4 transition-transform duration-500 delay-200",
+                                        "text-white text-sm md:text-base font-normal font-['Albert_Sans'] leading-relaxed text-left w-full transform group-hover:translate-y-0 translate-y-4 transition-transform duration-500 delay-200",
+                                        "text-white text-base xl:text-lg font-normal font-['Albert_Sans'] leading-relaxed text-left w-full transform group-hover:translate-y-0 translate-y-4 transition-transform duration-500 delay-200"
                                     )}
                                 >
                                     {food.desc}
@@ -658,7 +659,9 @@ const VillageWebsite = () => {
                                         href="https://maps.app.goo.gl/AsW2QwMHHR3Ckggt7"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="flex items-center"
+                                        className="flex items-center hover:scale-110 transition-transform duration-200"
+                                        title="Buka lokasi Ohoi Ngadi di Google Maps"
+                                        aria-label="Buka lokasi Ohoi Ngadi di Google Maps"
                                     >
                                         <svg
                                             xmlns="http://www.w3.org/2000/svg"
@@ -677,9 +680,10 @@ const VillageWebsite = () => {
                                     </a>
                                 </div>
                                 <button
-                                    className="w-6 h-6 bg-emerald-900 text-white flex items-center justify-center text-xl font-bold rounded"
+                                    type="button"
+                                    className="w-6 h-6 bg-emerald-900 text-white flex items-center justify-center text-xl font-bold rounded hover:bg-emerald-700 transition-colors duration-200"
                                     onClick={() => setShowMapModal(false)}
-                                    aria-label="Tutup"
+                                    aria-label="Tutup modal peta"
                                 >
                                     ×
                                 </button>
